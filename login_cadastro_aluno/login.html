@@ -41,6 +41,7 @@
       </form>
     </div>
   </div>
+  <div class="overlay" style="display: none;"></div>
   <span class="loader" style="display: none;"></span>
   <script>
     document.addEventListener('DOMContentLoaded', function() {
@@ -48,10 +49,12 @@
       
       document.querySelector('.logo').addEventListener('click', function(e) {
         e.preventDefault();
+        const overlay = document.querySelector('.overlay');
         loader.style.display = 'block';
+        overlay.style.display = 'block';
         setTimeout(() => {
           window.location.href = '../inicio/inicio.html';
-        }, 1000);
+        }, 3000);
       });
     });
   </script>
