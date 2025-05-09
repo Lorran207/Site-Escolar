@@ -1,0 +1,36 @@
+/* parte de cima da pagina*/
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: top;
+  padding: 10px 20px;
+  background-color: black;
+  color: white;
+  z-index: 1000;
+}
+
+.logo {
+  display: flex;
+  cursor: pointer;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo img {
+  height: 30px;
+  margin-right: 10px;
+}
+
+.nav-items {
+  display: flex;
+}
+
+.nav-items span {
+  margin-left: 15px;
+  cursor: pointer;
+}
