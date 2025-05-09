@@ -41,7 +41,20 @@
       </form>
     </div>
   </div>
-  <span class="loader.css"></span>
+  <span class="loader" style="display: none;"></span>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const loader = document.querySelector('.loader');
+      
+      document.querySelector('.logo').addEventListener('click', function(e) {
+        e.preventDefault();
+        loader.style.display = 'block';
+        setTimeout(() => {
+          window.location.href = '../inicio/inicio.html';
+        }, 1000);
+      });
+    });
+  </script>
 </body>
 
 </html>
