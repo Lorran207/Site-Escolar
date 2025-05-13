@@ -7,8 +7,7 @@ body {
   align-items: center;
   min-height: 100vh;
   font-family: 'Jost', sans-serif;
-  background-color: var(--bg-color);
-  color: var(--text-color);
+  background: linear-gradient(to bottom, black, purple);
 }
 
 /* parte de cima da pagina*/
