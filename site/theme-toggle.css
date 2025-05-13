@@ -1,0 +1,149 @@
+
+* {
+  transition: background-color 0.3s ease;
+}
+
+.theme-toggle {
+  --off: #c7cad1;
+  --mid: #829ad6;
+  --on: #255ff4;
+  --transDur: 0.5s;
+  --timing: cubic-bezier(0.6,0,0.4,1);
+  animation: bgOff var(--transDur) var(--timing);
+  background-color: var(--off);
+  border-radius: 0.67em / 0.5em;
+  box-shadow:
+    0 0.05em 0.1em #00000007 inset,
+    0 -0.25em 0.25em #0001 inset,
+    0 -0.5em 0 #0001 inset,
+    0 0.1em 0.1em #0001;
+  cursor: pointer;
+  position: relative;
+  width: 2.25em;
+  height: 1.5em;
+  -webkit-appearance: none;
+  appearance: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.theme-toggle:before {
+  animation: handleOff var(--transDur) var(--timing);
+  background-attachment: fixed;
+  background-position: 50% calc(50% - 0.1875em);
+  border-radius: 0.5em / 0.375em;
+  box-shadow:
+    0 0.175em 0.175em 0 #0001 inset,
+    0 0.375em 0 #0002 inset,
+    0 0.375em 0 var(--off) inset,
+    0 0.475em 0.1em #0001 inset;
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0.125em;
+  left: 0.125em;
+  width: 1em;
+  height: 0.75em;
+}
+
+.theme-toggle:checked {
+  animation: bgOn var(--transDur) var(--timing) forwards;
+}
+
+.theme-toggle:checked:before {
+  animation: handleOn var(--transDur) var(--timing) forwards;
+}
+
+.theme-toggle.pristine, .theme-toggle.pristine:before {
+  animation: none;
+}
+
+/* Modo claro */
+:root[data-theme="light"] {
+  --bg-color: white;
+  --text-color: black;
+  --primary-color: purple;
+}
+
+/* Modo escuro */
+:root[data-theme="dark"] {
+  --bg-color: black;
+  --text-color: white;
+  --primary-color: purple;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+}
+
+@keyframes bgOff {
+  from { background-color: var(--on); }
+  50% { background-color: var(--mid); }
+  to { background-color: var(--off); }
+}
+
+@keyframes bgOn {
+  from { background-color: var(--off); }
+  50% { background-color: var(--mid); }
+  to { background-color: var(--on); }
+}
+
+@keyframes handleOff {
+  from {
+    box-shadow:
+      0 0.175em 0.175em 0 #0001 inset,
+      0 0.375em 0 #0002 inset,
+      0 0.375em 0 var(--on) inset,
+      0 0.475em 0.1em #0001 inset;
+    left: 1.125em;
+    width: 1em;
+  }
+  50% {
+    box-shadow:
+      0 0.175em 0.175em 0 #0001 inset,
+      0 0.375em 0 #0002 inset,
+      0 0.375em 0 var(--mid) inset,
+      0 0.475em 0.1em #0001 inset;
+    left: 0.125em;
+    width: 2em;
+  }
+  to {
+    box-shadow:
+      0 0.175em 0.175em 0 #0001 inset,
+      0 0.375em 0 #0002 inset,
+      0 0.375em 0 var(--off) inset,
+      0 0.475em 0.1em #0001 inset;
+    left: 0.125em;
+    width: 1em;
+  }
+}
+
+@keyframes handleOn {
+  from {
+    box-shadow:
+      0 0.175em 0.175em 0 #0001 inset,
+      0 0.375em 0 #0002 inset,
+      0 0.375em 0 var(--off) inset,
+      0 0.475em 0.1em #0001 inset;
+    left: 0.125em;
+    width: 1em;
+  }
+  50% {
+    box-shadow:
+      0 0.175em 0.175em 0 #0001 inset,
+      0 0.375em 0 #0002 inset,
+      0 0.375em 0 var(--mid) inset,
+      0 0.475em 0.1em #0001 inset;
+    left: 0.125em;
+    width: 2em;
+  }
+  to {
+    box-shadow:
+      0 0.175em 0.175em 0 #0001 inset,
+      0 0.375em 0 #0002 inset,
+      0 0.375em 0 var(--on) inset,
+      0 0.475em 0.1em #0001 inset;
+    left: 1.125em;
+    width: 1em;
+  }
+}
