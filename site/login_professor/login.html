@@ -15,23 +15,16 @@
       <img src="../logo/logo.png" alt="Logo">
       <strong>Início</strong>
     </div>
+    <div class=""></div>
     <div class="nav-items">
       <span>Chat temporário</span>
       <span><strong>T</strong></span>
     </div>
+    <div class="aluno">
+      <strong onclick="window.location.href='../login_cadastro_aluno/login.html'">Aluno</strong>
+    </div>
   </div>
   <div class="main">
-    <input type="checkbox" id="chk" aria-hidden="true">
-    <div class="signup">
-      <form>
-        <label for="chk" aria-hidden="true">Cadastro</label>
-        <input type="text" name="txt" placeholder="User name" required>
-        <input type="email" name="email" placeholder="Email" required>
-        <input type="password" name="pswd" placeholder="Password" required>
-        <button>Sign up</button>
-      </form>
-    </div>
-
     <div class="login">
       <form>
         <label for="chk" aria-hidden="true">Login</label>
@@ -46,7 +39,7 @@
   <script>
     document.addEventListener('DOMContentLoaded', function() {
       const loader = document.querySelector('.loader');
-      
+
       document.querySelector('.logo').addEventListener('click', function(e) {
         e.preventDefault();
         const overlay = document.querySelector('.overlay');
