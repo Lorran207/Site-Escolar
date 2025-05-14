@@ -11,12 +11,13 @@ body {
 }
 
 .main {
-  width: 350px;
-  height: 450px;
+  width: 400px;
+  height: 500px;
   overflow: hidden;
   background: #eee;
   border-radius: 10px;
   box-shadow: 5px 20px 50px #000;
+  margin-top: 30px;
 }
 
 #chk {
@@ -34,29 +35,29 @@ label {
 }
 
 input {
-  width: 60%;
-  height: 10px;
+  width: 70%;
+  height: 20px;
   background: #e0dede;
   justify-content: center;
   display: flex;
-  margin: 20px auto;
-  padding: 12px;
+  margin: 25px auto;
+  padding: 15px;
   border: none;
   outline: none;
   border-radius: 5px;
+  font-size: 16px;
 }
 
 button {
-  width: 60%;
-  height: 40px;
-  margin: 10px auto;
+  width: 70%;
+  height: 50px;
+  margin: 25px auto;
   justify-content: center;
   display: block;
   color: #fff;
   background: #573b8a;
-  font-size: 1em;
+  font-size: 1.1em;
   font-weight: bold;
-  margin-top: 30px;
   outline: none;
   border: none;
   border-radius: 5px;
@@ -75,12 +76,14 @@ button:hover {
   justify-content: center;
   align-items: center;
   height: 100%;
+  padding: 20px 0;
 }
 
 .login label {
   color: #573b8a;
-  transform: scale(.6);
-  padding-top: 15px;
+  transform: scale(1);
+  margin-bottom: 20px;
+  padding-top: 0;
 }
 
 /* parte de cima da pagina*/
