@@ -17,6 +17,11 @@ body {
   background: #eee;
   border-radius: 10px;
   box-shadow: 5px 20px 50px #000;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin-top: 30px;
 }
 
 #chk {
