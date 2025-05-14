@@ -3,7 +3,7 @@ export function coleta_dados() {
   const dados = {
     username: document.getElementById("username").value,
     password: document.getElementById("password").value,
-    professor: false
+    professor: true
   }
 
   // Adicione lógica de autenticação aqui
