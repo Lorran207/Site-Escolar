@@ -28,10 +28,10 @@
   <div class="main">
     <div class="login">
       <form>
-        <label for="chk" aria-hidden="true">Login</label>
-        <input type="email" name="email" placeholder="Email" required="">
-        <input type="password" name="pswd" placeholder="Password" required="">
-        <button>Login</button>
+        <label for="chk" aria-hidden="true">Login Professor</label>
+        <input type="email" name="email" id="email" placeholder="Digite seu email" required="">
+        <input type="password" name="pswd" id="password" placeholder="Digite sua senha" required="">
+        <button type="button" onclick="validarLogin()">Entrar</button>
       </form>
     </div>
   </div>
@@ -49,6 +49,24 @@
         setTimeout(() => {
           window.location.href = '../inicio/inicio.html';
         }, 3000);
+
+  <script>
+    function validarLogin() {
+      const email = document.getElementById('email').value;
+      const senha = document.getElementById('password').value;
+      
+      // Aqui você pode adicionar a lógica para verificar o login
+      console.log("Email digitado:", email);
+      console.log("Senha digitada:", senha);
+      
+      // Por enquanto, apenas um alerta simples
+      alert("Login realizado com sucesso!\nEmail: " + email);
+      
+      // Futuramente você pode conectar isso ao backend
+      // window.location.href = '../inicio/inicio.html';
+    }
+  </script>
+
       });
     });
   </script>
