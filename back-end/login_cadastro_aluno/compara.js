@@ -3,9 +3,9 @@ export function compara_dados(dados) {
     const usernameTeste = "admin@gmail.com";
     const passwordTeste = "admin";
     const professorTeste = false;
-  if (dados.username === usernameTeste && dados.password === passwordTeste && professorTeste) {
+  if (dados.username === usernameTeste && dados.password === passwordTeste && professorTeste==dados.professor) {
       console.log("Login bem-sucedido!");
-      window.location.href = "../inicio/inicio.html";
+      window.location.href = "../../site/tela_inicio/aluno/inicio.html";
   } else {
       console.log("Login ou senha incorretos.");
       console.log(username, password);

@@ -5,7 +5,7 @@ export function compara_dados(dados) {
     const professorTeste = true;
   if (dados.username === usernameTeste && dados.password === passwordTeste && dados.professor == professorTeste) {
       console.log("Login bem-sucedido!");
-      window.location.href = "../inicio/inicio.html";
+      window.location.href = "../../site/tela_inicio/professor/inicio.html";
   } else {
       console.log("Login ou senha incorretos.");
       console.log(username, password);
