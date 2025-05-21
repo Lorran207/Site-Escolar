@@ -15,7 +15,7 @@
             <img src="/api/placeholder/40/40" alt="Logo Escola">
             <h2>Portal do Professor</h2>
         </div>
-        
+
         <ul class="sidebar-menu">
             <li>
                 <a href="#" class="active">
@@ -66,7 +66,7 @@
                 </a>
             </li>
         </ul>
-        
+
         <div class="sidebar-footer">
             <div class="user-info">
                 <div class="user-avatar">
@@ -78,7 +78,7 @@
             </div>
         </div>
     </div>
-    
+
     <!-- Conteúdo Principal -->
     <div class="main-content">
         <!-- Cabeçalho -->
@@ -87,13 +87,13 @@
                 <h1>Dashboard</h1>
                 <p>Bem-vindo(a) ao Portal do Professor</p>
             </div>
-            
+
             <div class="search-bar">
                 <input type="text" placeholder="Pesquisar...">
                 <button><i class="fas fa-search"></i></button>
             </div>
         </div>
-        
+
         <!-- Cards de Atalho -->
         <div class="dashboard">
             <div class="dashboard-card" id="card-frequencia">
@@ -101,32 +101,32 @@
                 <h3>Frequência</h3>
                 <p>Registre presença dos alunos</p>
             </div>
-            
+
             <div class="dashboard-card" id="card-aulas">
                 <i class="fas fa-chalkboard-teacher"></i>
                 <h3>Aulas</h3>
                 <p>Registre aulas ministradas</p>
             </div>
-            
+
             <div class="dashboard-card" id="card-biblioteca">
                 <i class="fas fa-book"></i>
                 <h3>Biblioteca Digital</h3>
                 <p>Acesse materiais didáticos</p>
             </div>
-            
+
             <div class="dashboard-card" id="card-plantao">
                 <i class="fas fa-question-circle"></i>
                 <h3>Plantão de Dúvidas</h3>
                 <p>Gerencie seus plantões</p>
             </div>
-            
+
             <div class="dashboard-card" id="card-questoes">
                 <i class="fas fa-tasks"></i>
                 <h3>Banco de Questões</h3>
                 <p>Crie e organize questões</p>
             </div>
         </div>
-        
+
         <!-- Seções Principais -->
         <div class="main-sections">
             <!-- Seção de Frequência -->
@@ -135,7 +135,7 @@
                     <h2>Registro de Frequência</h2>
                     <button class="btn btn-primary">Nova Chamada</button>
                 </div>
-                
+
                 <div class="search-select">
                     <select>
                         <option>Selecione a Turma</option>
@@ -152,7 +152,7 @@
                     </select>
                     <button><i class="fas fa-search"></i> Buscar</button>
                 </div>
-                
+
                 <table>
                     <thead>
                         <tr>
@@ -228,7 +228,7 @@
                     <h2>Registro de Aulas Ministradas</h2>
                     <button class="btn btn-primary">Nova Aula</button>
                 </div>
-                
+
                 <div class="form-group">
                     <label for="aula-turma">Turma</label>
                     <select id="aula-turma">
@@ -239,22 +239,22 @@
                         <option>8º Ano B</option>
                     </select>
                 </div>
-                
+
                 <div class="form-group">
                     <label for="aula-data">Data</label>
                     <input type="date" id="aula-data">
                 </div>
-                
+
                 <div class="form-group">
                     <label for="aula-titulo">Título da Aula</label>
                     <input type="text" id="aula-titulo" placeholder="Ex: Equações do 2º grau">
                 </div>
-                
+
                 <div class="form-group">
                     <label for="aula-conteudo">Conteúdo Trabalhado</label>
                     <textarea id="aula-conteudo" rows="5" placeholder="Descreva o conteúdo trabalhado na aula..."></textarea>
                 </div>
-                
+
                 <div class="form-group">
                     <label>Recursos Utilizados</label>
                     <div style="display: flex; gap: 10px; margin-top: 5px;">
@@ -276,17 +276,17 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="form-group">
                     <label for="aula-observacoes">Observações</label>
                     <textarea id="aula-observacoes" rows="3" placeholder="Observações adicionais sobre a aula..."></textarea>
                 </div>
-                
+
                 <div style="display: flex; justify-content: flex-end; gap: 10px; margin-top: 20px;">
                     <button class="btn btn-outline">Cancelar</button>
                     <button class="btn btn-primary">Salvar Registro</button>
                 </div>
-                
+
                 <div style="margin-top: 30px;">
                     <h3>Últimas Aulas Registradas</h3>
                     <table>
@@ -343,13 +343,13 @@
                     <h2>Biblioteca Digital de Materiais</h2>
                     <button class="btn btn-primary">Adicionar Material</button>
                 </div>
-                
+
                 <div class="tab-nav">
                     <button class="tab-button active">Meus Materiais</button>
                     <button class="tab-button">Compartilhados</button>
                     <button class="tab-button">Favoritos</button>
                 </div>
-                
+
                 <div class="search-select" style="margin-bottom: 20px;">
                     <input type="text" placeholder="Buscar material...">
                     <select>
@@ -367,7 +367,7 @@
                     </select>
                     <button><i class="fas fa-search"></i> Buscar</button>
                 </div>
-                
+
                 <div class="material-grid">
                     <div class="material-card">
                         <div class="material-thumbnail">
@@ -382,7 +382,7 @@
                             </div>
                         </div>
                     </div>
-                    
+
                     <div class="material-card">
                         <div class="material-thumbnail">
                             <i class="fas fa-file-powerpoint"></i>
@@ -391,3 +391,90 @@
                             <h3>Slides Geometria Espacial</h3>
                             <p>PPT • 5MB • 8º Ano</p>
                             <div class="material-actions">
+                                <button class="btn btn-sm btn-outline"><i class="fas fa-download"></i></button>
+                                <button class="btn btn-sm btn-outline"><i class="fas fa-share-alt"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Captura todos os elementos do menu
+        const menuFrequencia = document.getElementById('menu-frequencia');
+        const menuAulas = document.getElementById('menu-aulas');
+        const menuBiblioteca = document.getElementById('menu-biblioteca');
+        const menuPlantao = document.getElementById('menu-plantao');
+        const menuQuestoes = document.getElementById('menu-questoes');
+
+        // Captura todos os cards da dashboard
+        const cardFrequencia = document.getElementById('card-frequencia');
+        const cardAulas = document.getElementById('card-aulas');
+        const cardBiblioteca = document.getElementById('card-biblioteca');
+        const cardPlantao = document.getElementById('card-plantao');
+        const cardQuestoes = document.getElementById('card-questoes');
+
+        // Captura todas as seções de conteúdo
+        const frequenciaContent = document.getElementById('frequencia-content');
+        const aulasContent = document.getElementById('aulas-content');
+        const bibliotecaContent = document.getElementById('biblioteca-content');
+        const plantaoContent = document.getElementById('plantao-content');
+        const questoesContent = document.getElementById('questoes-content');
+
+        // Função para esconder todas as seções
+        function esconderTodasSecoes() {
+            frequenciaContent.style.display = 'none';
+            if (aulasContent) aulasContent.style.display = 'none';
+            if (bibliotecaContent) bibliotecaContent.style.display = 'none';
+            if (plantaoContent) plantaoContent.style.display = 'none';
+            if (questoesContent) questoesContent.style.display = 'none';
+        }
+
+        // Função para mostrar a seção de frequência
+        function mostrarFrequencia() {
+            esconderTodasSecoes();
+            frequenciaContent.style.display = 'block';
+        }
+
+        // Função para mostrar a seção de aulas
+        function mostrarAulas() {
+            esconderTodasSecoes();
+            aulasContent.style.display = 'block';
+        }
+
+        // Função para mostrar a seção de biblioteca
+        function mostrarBiblioteca() {
+            esconderTodasSecoes();
+            bibliotecaContent.style.display = 'block';
+        }
+
+        // Função para mostrar a seção de plantão
+        function mostrarPlantao() {
+            esconderTodasSecoes();
+            plantaoContent.style.display = 'block';
+        }
+
+        // Função para mostrar a seção de questões
+        function mostrarQuestoes() {
+            esconderTodasSecoes();
+            questoesContent.style.display = 'block';
+        }
+
+        // Adiciona os event listeners aos elementos do menu
+        if (menuFrequencia) menuFrequencia.addEventListener('click', mostrarFrequencia);
+        if (menuAulas) menuAulas.addEventListener('click', mostrarAulas);
+        if (menuBiblioteca) menuBiblioteca.addEventListener('click', mostrarBiblioteca);
+        if (menuPlantao) menuPlantao.addEventListener('click', mostrarPlantao);
+        if (menuQuestoes) menuQuestoes.addEventListener('click', mostrarQuestoes);
+
+        // Adiciona os event listeners aos cards da dashboard
+        if (cardFrequencia) cardFrequencia.addEventListener('click', mostrarFrequencia);
+        if (cardAulas) cardAulas.addEventListener('click', mostrarAulas);
+        if (cardBiblioteca) cardBiblioteca.addEventListener('click', mostrarBiblioteca);
+        if (cardPlantao) cardPlantao.addEventListener('click', mostrarPlantao);
+        if (cardQuestoes) cardQuestoes.addEventListener('click', mostrarQuestoes);
+    </script>
+</body>
+</html>

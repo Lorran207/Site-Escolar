@@ -450,6 +450,13 @@
     }
 
     /* Responsividade */
+    /* Regra geral para evitar rolagem horizontal */
+    html, body {
+        overflow-x: hidden;
+        width: 100%;
+        position: relative;
+    }
+    
     @media (max-width: 992px) {
         .sidebar {
             width: 70px;
@@ -476,10 +483,20 @@
 
         .main-content {
             margin-left: 70px;
+            width: calc(100% - 70px);
+            box-sizing: border-box;
         }
 
         .sidebar-footer {
             left: 10px;
+        }
+        
+        /* Ajuste para tabelas responsivas */
+        table {
+            display: block;
+            width: 100%;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
         }
     }
 
@@ -500,6 +517,41 @@
 
         .search-bar input {
             width: 100%;
+        }
+        
+        /* Ajustes para a seção de biblioteca */
+        .material-grid {
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        }
+        
+        /* Ajuste para os formulários */
+        .search-select {
+            flex-direction: column;
+        }
+        
+        .search-select select,
+        .search-select button {
+            width: 100%;
+            margin-bottom: 10px;
+        }
+    }
+    
+    /* Ajustes específicos para telas muito pequenas */
+    @media (max-width: 480px) {
+        .main-content {
+            padding: 10px;
+        }
+        
+        .dashboard-card {
+            padding: 15px 10px;
+        }
+        
+        .section-card {
+            padding: 15px 10px;
+        }
+        
+        th, td {
+            padding: 8px 10px;
         }
     }
 
