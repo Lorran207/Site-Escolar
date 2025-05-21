@@ -307,6 +307,14 @@ table {
     margin-top: 15px;
 }
 
+/* Tabela específica para atividades pendentes */
+#atividades-content table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+}
+
 th, td {
     padding: 12px 15px;
     text-align: left;
@@ -501,13 +509,7 @@ html, body {
         left: 10px;
     }
     
-    /* Ajuste para tabelas responsivas */
-    table {
-        display: block;
-        width: 100%;
-        overflow-x: auto;
-        -webkit-overflow-scrolling: touch;
-    }
+    /* Ajuste para manter apenas tabelas de atividades com scroll */
 }
 
 @media (max-width: 768px) {
