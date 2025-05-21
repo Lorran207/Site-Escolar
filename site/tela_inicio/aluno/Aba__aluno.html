@@ -6,10 +6,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
     <title>Portal do Aluno</title>
     <link rel="stylesheet" href="estilo_aba_aluno.css">
+    <link rel="stylesheet" href="loading.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
+    <!-- Loading -->
+    <div class="overlay" style="display: none;"></div>
+    <div class="loader" style="display: none;">
+        <div class="circle blue"></div>
+        <div class="circle green"></div>
+        <div class="circle red"></div>
+    </div>
+    <div class="loading-text" style="display: none;">
+        <span>C</span>
+        <span>a</span>
+        <span>r</span>
+        <span>r</span>
+        <span>e</span>
+        <span>g</span>
+        <span>a</span>
+        <span>n</span>
+        <span>d</span>
+        <span>o</span>
+        <span>.</span>
+        <span>.</span>
+        <span>.</span>
+    </div>
     <!-- Sidebar / Menu Lateral -->
     <div class="sidebar">
         <div class="sidebar-logo">
@@ -594,6 +617,31 @@
     </div>
     
     <script>
+        // Função de loading
+        function showLoading(duration = 2000) {
+            const loader = document.querySelector('.loader');
+            const loadingText = document.querySelector('.loading-text');
+            const overlay = document.querySelector('.overlay');
+            
+            loader.style.display = 'flex';
+            loadingText.style.display = 'block';
+            overlay.style.display = 'block';
+            
+            return new Promise(resolve => {
+                setTimeout(() => {
+                    loader.style.display = 'none';
+                    loadingText.style.display = 'none';
+                    overlay.style.display = 'none';
+                    resolve();
+                }, duration);
+            });
+        }
+        
+        // Mostrar loading quando a página carregar
+        document.addEventListener('DOMContentLoaded', function() {
+            showLoading(2000);
+        });
+        
         // Captura todos os elementos do menu
         const menuAtividades = document.getElementById('menu-atividades');
         const menuMateriais = document.getElementById('menu-materiais');
@@ -621,25 +669,29 @@
         }
         
         // Função para mostrar a seção de atividades
-        function mostrarAtividades() {
+        async function mostrarAtividades() {
+            await showLoading(1000);
             esconderTodasSecoes();
             atividadesContent.style.display = 'block';
         }
         
         // Função para mostrar a seção de materiais
-        function mostrarMateriais() {
+        async function mostrarMateriais() {
+            await showLoading(1000);
             esconderTodasSecoes();
             materiaisContent.style.display = 'block';
         }
         
         // Função para mostrar a seção de dúvidas
-        function mostrarDuvidas() {
+        async function mostrarDuvidas() {
+            await showLoading(1000);
             esconderTodasSecoes();
             duvidasContent.style.display = 'block';
         }
         
         // Função para mostrar a seção de desempenho
-        function mostrarDesempenho() {
+        async function mostrarDesempenho() {
+            await showLoading(1000);
             esconderTodasSecoes();
             desempenhoContent.style.display = 'block';
         }
