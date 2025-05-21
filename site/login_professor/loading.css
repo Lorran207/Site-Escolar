@@ -1,97 +1,30 @@
-
 .loader {
-  width: 100px;
-  height: 100px;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
   position: fixed;
   z-index: 9999;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  border-top: 4px solid black;
+  border-right: 4px solid transparent;
+  box-sizing: border-box;
+  animation: rotation 1s linear infinite;
 }
-
-.loader .circle {
+.loader::after {
+  content: '';  
+  box-sizing: border-box;
   position: absolute;
-  width: 100%;
-  height: 100%;
+  left: 0;
+  top: 0;
+  width: 48px;
+  height: 48px;
   border-radius: 50%;
-  border: 5px solid transparent;
-  mix-blend-mode: overlay;
-  animation: rotate var(--duration) var(--timing) infinite;
-  pointer-events: none;
+  border-left: 4px solid white;
+  border-bottom: 4px solid transparent;
+  animation: rotation 0.5s linear infinite reverse;
 }
-
-.loader .blue {
-  border-top-color: #3498db;
-  --duration: 1.5s;
-  --timing: ease-in-out;
-}
-
-.loader .green {
-  border-left-color: #2ecc71;
-  --duration: 2s;
-  --timing: ease-in;
-}
-
-.loader .red {
-  border-bottom-color: #e74c3c;
-  --duration: 2.5s;
-  --timing: ease-out;
-}
-
-.loading-text {
-  position: fixed;
-  z-index: 9999;
-  top: calc(50% + 70px);
-  left: 50%;
-  transform: translateX(-50%);
-  font-family: 'Nunito', sans-serif;
-  font-size: 18px;
-  color: white;
-  font-weight: bold;
-  text-align: center;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
-}
-
-.loading-text span {
-  display: inline-block;
-  animation: bounce 1.5s infinite;
-}
-
-.loading-text span:nth-child(2) {
-  animation-delay: 0.1s;
-}
-
-.loading-text span:nth-child(3) {
-  animation-delay: 0.2s;
-}
-
-.loading-text span:nth-child(4) {
-  animation-delay: 0.3s;
-}
-
-.loading-text span:nth-child(5) {
-  animation-delay: 0.4s;
-}
-
-.loading-text span:nth-child(6) {
-  animation-delay: 0.5s;
-}
-
-.loading-text span:nth-child(7) {
-  animation-delay: 0.6s;
-}
-
-.loading-text span:nth-child(8) {
-  animation-delay: 0.7s;
-}
-
-.loading-text span:nth-child(9) {
-  animation-delay: 0.8s;
-}
-
 .overlay {
   position: fixed;
   top: 0;
@@ -99,24 +32,14 @@
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.7);
-  backdrop-filter: blur(4px);
   z-index: 9998;
 }
 
-@keyframes rotate {
+@keyframes rotation {
   0% {
     transform: rotate(0deg);
   }
   100% {
     transform: rotate(360deg);
   }
-}
-
-@keyframes bounce {
-  0%, 100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-10px);
-  }
-}
+} 
