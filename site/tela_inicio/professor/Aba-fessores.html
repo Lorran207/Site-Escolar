@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal do Professor</title>
+    <link rel="stylesheet" href="estilo_aba.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Sidebar / Menu Lateral -->
+    <div class="sidebar">
+        <div class="sidebar-logo">
+            <img src="/api/placeholder/40/40" alt="Logo Escola">
+            <h2>Portal do Professor</h2>
+        </div>
+        
+        <ul class="sidebar-menu">
+            <li>
+                <a href="#" class="active">
+                    <i class="fas fa-home"></i>
+                    <span>Dashboard</span>
+                </a>
+            </li>
+            <li>
+                <a href="#" id="menu-frequencia">
+                    <i class="fas fa-user-check"></i>
+                    <span>Frequência</span>
+                </a>
+            </li>
+            <li>
+                <a href="#" id="menu-aulas">
+                    <i class="fas fa-chalkboard-teacher"></i>
+                    <span>Aulas</span>
+                </a>
+            </li>
+            <li>
+                <a href="#" id="menu-biblioteca">
+                    <i class="fas fa-book"></i>
+                    <span>Biblioteca</span>
+                </a>
+            </li>
+            <li>
+                <a href="#" id="menu-plantao">
+                    <i class="fas fa-question-circle"></i>
+                    <span>Plantão de Dúvidas</span>
+                </a>
+            </li>
+            <li>
+                <a href="#" id="menu-questoes">
+                    <i class="fas fa-tasks"></i>
+                    <span>Banco de Questões</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="fas fa-chart-line"></i>
+                    <span>Relatórios</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="fas fa-cog"></i>
+                    <span>Configurações</span>
+                </a>
+            </li>
+        </ul>
+        
+        <div class="sidebar-footer">
+            <div class="user-info">
+                <div class="user-avatar">
+                    P
+                </div>
+                <div class="user-name">
+                    Prof. Silva
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Conteúdo Principal -->
+    <div class="main-content">
+        <!-- Cabeçalho -->
+        <div class="header">
+            <div class="page-title">
+                <h1>Dashboard</h1>
+                <p>Bem-vindo(a) ao Portal do Professor</p>
+            </div>
+            
+            <div class="search-bar">
+                <input type="text" placeholder="Pesquisar...">
+                <button><i class="fas fa-search"></i></button>
+            </div>
+        </div>
+        
+        <!-- Cards de Atalho -->
+        <div class="dashboard">
+            <div class="dashboard-card" id="card-frequencia">
+                <i class="fas fa-user-check"></i>
+                <h3>Frequência</h3>
+                <p>Registre presença dos alunos</p>
+            </div>
+            
+            <div class="dashboard-card" id="card-aulas">
+                <i class="fas fa-chalkboard-teacher"></i>
+                <h3>Aulas</h3>
+                <p>Registre aulas ministradas</p>
+            </div>
+            
+            <div class="dashboard-card" id="card-biblioteca">
+                <i class="fas fa-book"></i>
+                <h3>Biblioteca Digital</h3>
+                <p>Acesse materiais didáticos</p>
+            </div>
+            
+            <div class="dashboard-card" id="card-plantao">
+                <i class="fas fa-question-circle"></i>
+                <h3>Plantão de Dúvidas</h3>
+                <p>Gerencie seus plantões</p>
+            </div>
+            
+            <div class="dashboard-card" id="card-questoes">
+                <i class="fas fa-tasks"></i>
+                <h3>Banco de Questões</h3>
+                <p>Crie e organize questões</p>
+            </div>
+        </div>
+        
+        <!-- Seções Principais -->
+        <div class="main-sections">
+            <!-- Seção de Frequência -->
+            <div class="section-card fadeIn" id="frequencia-content">
+                <div class="section-header">
+                    <h2>Registro de Frequência</h2>
+                    <button class="btn btn-primary">Nova Chamada</button>
+                </div>
+                
+                <div class="search-select">
+                    <select>
+                        <option>Selecione a Turma</option>
+                        <option>9º Ano A</option>
+                        <option>9º Ano B</option>
+                        <option>8º Ano A</option>
+                        <option>8º Ano B</option>
+                    </select>
+                    <select>
+                        <option>Selecione a Data</option>
+                        <option>20/05/2025</option>
+                        <option>19/05/2025</option>
+                        <option>18/05/2025</option>
+                    </select>
+                    <button><i class="fas fa-search"></i> Buscar</button>
+                </div>
+                
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Nº</th>
+                            <th>Nome do Aluno</th>
+                            <th>Status</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>01</td>
+                            <td>Ana Carolina Silva</td>
+                            <td><span class="status-badge status-presente">Presente</span></td>
+                            <td>
+                                <div class="action-buttons">
+                                    <button class="btn btn-sm btn-outline">Alterar</button>
+                                    <button class="btn btn-sm btn-outline">Justificar</button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>02</td>
+                            <td>Bruno Almeida Santos</td>
+                            <td><span class="status-badge status-ausente">Ausente</span></td>
+                            <td>
+                                <div class="action-buttons">
+                                    <button class="btn btn-sm btn-outline">Alterar</button>
+                                    <button class="btn btn-sm btn-outline">Justificar</button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>03</td>
+                            <td>Carla Mendes Oliveira</td>
+                            <td><span class="status-badge status-justificado">Justificado</span></td>
+                            <td>
+                                <div class="action-buttons">
+                                    <button class="btn btn-sm btn-outline">Alterar</button>
+                                    <button class="btn btn-sm btn-outline">Justificar</button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>04</td>
+                            <td>Daniel Ferreira Lima</td>
+                            <td><span class="status-badge status-presente">Presente</span></td>
+                            <td>
+                                <div class="action-buttons">
+                                    <button class="btn btn-sm btn-outline">Alterar</button>
+                                    <button class="btn btn-sm btn-outline">Justificar</button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>05</td>
+                            <td>Eduarda Gomes Costa</td>
+                            <td><span class="status-badge status-presente">Presente</span></td>
+                            <td>
+                                <div class="action-buttons">
+                                    <button class="btn btn-sm btn-outline">Alterar</button>
+                                    <button class="btn btn-sm btn-outline">Justificar</button>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Seção de Aulas -->
+            <div class="section-card fadeIn" id="aulas-content" style="display: none;">
+                <div class="section-header">
+                    <h2>Registro de Aulas Ministradas</h2>
+                    <button class="btn btn-primary">Nova Aula</button>
+                </div>
+                
+                <div class="form-group">
+                    <label for="aula-turma">Turma</label>
+                    <select id="aula-turma">
+                        <option>Selecione a Turma</option>
+                        <option>9º Ano A</option>
+                        <option>9º Ano B</option>
+                        <option>8º Ano A</option>
+                        <option>8º Ano B</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="aula-data">Data</label>
+                    <input type="date" id="aula-data">
+                </div>
+                
+                <div class="form-group">
+                    <label for="aula-titulo">Título da Aula</label>
+                    <input type="text" id="aula-titulo" placeholder="Ex: Equações do 2º grau">
+                </div>
+                
+                <div class="form-group">
+                    <label for="aula-conteudo">Conteúdo Trabalhado</label>
+                    <textarea id="aula-conteudo" rows="5" placeholder="Descreva o conteúdo trabalhado na aula..."></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label>Recursos Utilizados</label>
+                    <div style="display: flex; gap: 10px; margin-top: 5px;">
+                        <div style="display: flex; align-items: center;">
+                            <input type="checkbox" id="recurso-livro" style="width: auto; margin-right: 5px;">
+                            <label for="recurso-livro" style="display: inline;">Livro Didático</label>
+                        </div>
+                        <div style="display: flex; align-items: center;">
+                            <input type="checkbox" id="recurso-video" style="width: auto; margin-right: 5px;">
+                            <label for="recurso-video" style="display: inline;">Vídeo</label>
+                        </div>
+                        <div style="display: flex; align-items: center;">
+                            <input type="checkbox" id="recurso-slides" style="width: auto; margin-right: 5px;">
+                            <label for="recurso-slides" style="display: inline;">Slides</label>
+                        </div>
+                        <div style="display: flex; align-items: center;">
+                            <input type="checkbox" id="recurso-atividade" style="width: auto; margin-right: 5px;">
+                            <label for="recurso-atividade" style="display: inline;">Atividade Impressa</label>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="aula-observacoes">Observações</label>
+                    <textarea id="aula-observacoes" rows="3" placeholder="Observações adicionais sobre a aula..."></textarea>
+                </div>
+                
+                <div style="display: flex; justify-content: flex-end; gap: 10px; margin-top: 20px;">
+                    <button class="btn btn-outline">Cancelar</button>
+                    <button class="btn btn-primary">Salvar Registro</button>
+                </div>
+                
+                <div style="margin-top: 30px;">
+                    <h3>Últimas Aulas Registradas</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Data</th>
+                                <th>Turma</th>
+                                <th>Título</th>
+                                <th>Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>20/05/2025</td>
+                                <td>9º Ano A</td>
+                                <td>Equações do 2º grau</td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <button class="btn btn-sm btn-outline">Editar</button>
+                                        <button class="btn btn-sm btn-outline">Ver</button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>19/05/2025</td>
+                                <td>8º Ano B</td>
+                                <td>Teorema de Pitágoras</td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <button class="btn btn-sm btn-outline">Editar</button>
+                                        <button class="btn btn-sm btn-outline">Ver</button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>18/05/2025</td>
+                                <td>9º Ano B</td>
+                                <td>Resolução de Exercícios</td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <button class="btn btn-sm btn-outline">Editar</button>
+                                        <button class="btn btn-sm btn-outline">Ver</button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Seção de Biblioteca Digital -->
+            <div class="section-card fadeIn" id="biblioteca-content" style="display: none;">
+                <div class="section-header">
+                    <h2>Biblioteca Digital de Materiais</h2>
+                    <button class="btn btn-primary">Adicionar Material</button>
+                </div>
+                
+                <div class="tab-nav">
+                    <button class="tab-button active">Meus Materiais</button>
+                    <button class="tab-button">Compartilhados</button>
+                    <button class="tab-button">Favoritos</button>
+                </div>
+                
+                <div class="search-select" style="margin-bottom: 20px;">
+                    <input type="text" placeholder="Buscar material...">
+                    <select>
+                        <option>Todos os tipos</option>
+                        <option>Documentos</option>
+                        <option>Apresentações</option>
+                        <option>Vídeos</option>
+                        <option>Atividades</option>
+                    </select>
+                    <select>
+                        <option>Todas as turmas</option>
+                        <option>9º Ano</option>
+                        <option>8º Ano</option>
+                        <option>7º Ano</option>
+                    </select>
+                    <button><i class="fas fa-search"></i> Buscar</button>
+                </div>
+                
+                <div class="material-grid">
+                    <div class="material-card">
+                        <div class="material-thumbnail">
+                            <i class="fas fa-file-pdf"></i>
+                        </div>
+                        <div class="material-info">
+                            <h3>Lista de Exercícios - Matemática</h3>
+                            <p>PDF • 2MB • 9º Ano</p>
+                            <div class="material-actions">
+                                <button class="btn btn-sm btn-outline"><i class="fas fa-download"></i></button>
+                                <button class="btn btn-sm btn-outline"><i class="fas fa-share-alt"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="material-card">
+                        <div class="material-thumbnail">
+                            <i class="fas fa-file-powerpoint"></i>
+                        </div>
+                        <div class="material-info">
+                            <h3>Slides Geometria Espacial</h3>
+                            <p>PPT • 5MB • 8º Ano</p>
+                            <div class="material-actions">

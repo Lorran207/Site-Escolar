@@ -1,14 +1,19 @@
-
-/*Estilos gerais da página*/
-body {
+/* Reset e configurações base */
+* {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
+}
+
+/* Estilos gerais da página */
+body {
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
   font-family: 'Jost', sans-serif;
-  background: linear-gradient(to bottom, black, purple);
+  background: linear-gradient(to bottom, #1e88e5, white);
+  padding: 20px;
 }
 
 /* Barra de navegação */
@@ -18,11 +23,12 @@ body {
   width: 100%;
   display: flex;
   align-items: center;
-  justify-content: top;
+  justify-content: space-between;
   padding: 10px 20px;
-  background-color: black;
   color: white;
   z-index: 1000;
+  background: rgba(30, 136, 229, 0.1);
+  backdrop-filter: blur(10px);
 }
 
 .logo {
@@ -30,6 +36,11 @@ body {
   cursor: pointer;
   align-items: center;
   gap: 10px;
+  transition: all 0.3s ease;
+}
+
+.logo:hover {
+  transform: scale(1.05);
 }
 
 .logo img {
@@ -37,34 +48,28 @@ body {
   margin-right: 10px;
 }
 
-.nav-items {
-  display: flex;
-}
-
-.nav-items span {
-  margin-left: 15px;
-  cursor: pointer;
-}
-
 .aluno {
-  right: 0;
-  position: fixed;
   cursor: pointer;
-  margin-right: 20px;
+  padding: 8px 16px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 20px;
+  transition: all 0.3s ease;
+}
+
+.aluno:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: translateY(-2px);
 }
 
 /* Container principal */
 .main {
-  width: 380px;
+  width: 100%;
+  max-width: 380px;
   min-height: 450px;
   background: #fff;
   border-radius: 10px;
-  box-shadow: 5px 20px 50px #000;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  margin-top: 30px;
+  box-shadow: 5px 20px 50px rgba(0, 0, 0, 0.3);
+  margin-top: 80px;
   overflow: hidden;
 }
 
@@ -76,13 +81,17 @@ body {
 
 .tab-header {
   width: 100%;
-  background: #573b8a;
+  background: #1e88e5;
   color: white;
   text-align: center;
   padding: 15px 0;
   font-size: 1.4em;
   font-weight: bold;
   border-radius: 10px 10px 0 0;
+}
+
+.tab-header .active {
+  display: block;
 }
 
 .tab-content {
@@ -97,7 +106,7 @@ body {
 }
 
 .login-form h2 {
-  color: #573b8a;
+  color: black;
   margin-bottom: 25px;
   font-size: 2em;
   text-align: center;
@@ -110,7 +119,7 @@ body {
 
 .form-group label {
   display: block;
-  color: #573b8a;
+  color: black;
   margin-bottom: 8px;
   font-size: 1em;
   font-weight: 500;
@@ -124,12 +133,23 @@ input {
   font-size: 1em;
   background: #f8f8f8;
   box-sizing: border-box;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+input:focus {
+  outline: none;
+  border-color: #1e88e5;
+  box-shadow: 0 0 5px rgba(30, 136, 229, 0.3);
+}
+
+input::placeholder {
+  color: #999;
 }
 
 button {
   width: 100%;
   padding: 12px;
-  background: #573b8a;
+  background: #1e88e5;
   color: white;
   border: none;
   border-radius: 5px;
@@ -141,7 +161,13 @@ button {
 }
 
 button:hover {
-  background: #6d44b8;
+  background: #2e16e5;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(30, 136, 229, 0.4);
+}
+
+button:active {
+  transform: translateY(0);
 }
 
 /* Overlay e loader */
@@ -157,4 +183,225 @@ button:hover {
 
 .loader {
   z-index: 1002;
+}
+
+/* MEDIA QUERIES PARA RESPONSIVIDADE */
+
+/* Tablets (768px e abaixo) */
+@media screen and (max-width: 768px) {
+  body {
+    padding: 15px;
+  }
+
+  .navbar {
+    padding: 8px 15px;
+  }
+
+  .logo img {
+    height: 25px;
+    margin-right: 8px;
+  }
+
+  .logo {
+    gap: 8px;
+  }
+
+  .aluno {
+    padding: 6px 12px;
+    font-size: 0.95em;
+  }
+
+  .main {
+    max-width: 90%;
+    margin-top: 70px;
+  }
+
+  .tab-header {
+    font-size: 1.2em;
+    padding: 12px 0;
+  }
+
+  .tab-content {
+    padding: 15px;
+  }
+
+  .login-form h2 {
+    font-size: 1.6em;
+    margin-bottom: 20px;
+  }
+
+  input, button {
+    padding: 10px;
+    font-size: 0.95em;
+  }
+
+  .form-group {
+    margin-bottom: 18px;
+  }
+}
+
+/* Smartphones (480px e abaixo) */
+@media screen and (max-width: 480px) {
+  body {
+    padding: 10px;
+  }
+
+  .navbar {
+    padding: 6px 10px;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .logo {
+    gap: 5px;
+  }
+
+  .logo img {
+    height: 20px;
+    margin-right: 5px;
+  }
+
+  .logo strong {
+    font-size: 0.9em;
+  }
+
+  .aluno {
+    padding: 6px 10px;
+    font-size: 0.9em;
+  }
+
+  .main {
+    max-width: 100%;
+    min-height: 400px;
+    margin-top: 60px;
+    border-radius: 8px;
+  }
+
+  .tab-header {
+    font-size: 1.1em;
+    padding: 10px 0;
+    border-radius: 8px 8px 0 0;
+  }
+
+  .tab-content {
+    padding: 12px;
+  }
+
+  .login-form h2 {
+    font-size: 1.4em;
+    margin-bottom: 15px;
+  }
+
+  .form-group {
+    margin-bottom: 15px;
+  }
+
+  .form-group label {
+    font-size: 0.9em;
+    margin-bottom: 6px;
+  }
+
+  input, button {
+    padding: 8px;
+    font-size: 0.9em;
+  }
+
+  button {
+    margin-top: 15px;
+  }
+}
+
+/* Telas muito pequenas (320px e abaixo) */
+@media screen and (max-width: 320px) {
+  .navbar {
+    padding: 5px 8px;
+  }
+
+  .logo strong {
+    font-size: 0.85em;
+  }
+
+  .aluno {
+    padding: 5px 8px;
+    font-size: 0.85em;
+  }
+
+  .main {
+    margin-top: 55px;
+    border-radius: 6px;
+  }
+
+  .tab-content {
+    padding: 10px;
+  }
+
+  .login-form h2 {
+    font-size: 1.2em;
+    margin-bottom: 12px;
+  }
+
+  .form-group {
+    margin-bottom: 12px;
+  }
+
+  input, button {
+    padding: 6px;
+    font-size: 0.85em;
+  }
+}
+
+/* Modo paisagem para dispositivos móveis */
+@media screen and (max-height: 500px) and (orientation: landscape) {
+  body {
+    align-items: flex-start;
+    padding-top: 80px;
+  }
+
+  .main {
+    margin-top: 10px;
+    min-height: auto;
+  }
+
+  .login-form h2 {
+    margin-bottom: 15px;
+    font-size: 1.3em;
+  }
+
+  .form-group {
+    margin-bottom: 12px;
+  }
+
+  .tab-content {
+    padding: 15px;
+  }
+}
+
+/* Ajustes para telas grandes (Desktop) */
+@media screen and (min-width: 1200px) {
+  .main {
+    max-width: 400px;
+    min-height: 480px;
+  }
+
+  .tab-content {
+    padding: 25px;
+  }
+
+  .login-form h2 {
+    font-size: 2.2em;
+    margin-bottom: 30px;
+  }
+}
+
+/* Hover states mais sutis em dispositivos touch */
+@media (hover: none) and (pointer: coarse) {
+  .logo:hover,
+  .aluno:hover,
+  button:hover {
+    transform: none;
+  }
+
+  button:active {
+    background: #2e16e5;
+  }
 }

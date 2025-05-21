@@ -1,7 +1,5 @@
-
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,27 +10,23 @@
   <script src="../theme-toggle.js"></script>
   <script src="../../back-end/login_professor/login.js" type="module"></script>
 </head>
-
 <body>
   <div class="navbar">
     <div class="logo" onclick="window.location.href='../inicio/inicio.html'">
       <img src="../logo/logo.png" alt="Logo">
       <strong>Início</strong>
     </div>
-    <div class="nav-items">
-      <span><strong>T</strong></span>
-    </div>
     <div class="aluno">
       <strong onclick="window.location.href='../login_cadastro_aluno/login.html'">Aluno</strong>
     </div>
   </div>
-  
+
   <div class="main">
     <div class="tabs">
       <div class="tab-header">
         <div class="active">Login Professor</div>
       </div>
-      
+
       <div class="tab-content">
         <div class="login-form">
           <form>
@@ -51,14 +45,13 @@
       </div>
     </div>
   </div>
-  
+
   <div class="overlay" style="display: none;"></div>
   <span class="loader" style="display: none;"></span>
-  
+
   <script>
     document.addEventListener('DOMContentLoaded', function() {
       const loader = document.querySelector('.loader');
-
       document.querySelector('.logo').addEventListener('click', function(e) {
         e.preventDefault();
         const overlay = document.querySelector('.overlay');
@@ -70,11 +63,9 @@
       });
     });
   </script>
-
   <script type="module">
     import { coleta_dados } from '../../back-end/login_professor/login.js';
     window.coleta_dados = coleta_dados;
   </script>
 </body>
-
 </html>
