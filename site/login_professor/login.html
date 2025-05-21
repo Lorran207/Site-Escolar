@@ -6,11 +6,31 @@
   <title>Login Professor</title>
   <link rel="stylesheet" href="estilo_login.css">
   <link rel="stylesheet" href="loading.css">
+  <link rel="stylesheet" href="../common/lightsaber-loader.css">
   <link rel="stylesheet" href="../theme-toggle.css">
   <script src="../theme-toggle.js"></script>
   <script src="../../back-end/login_professor/login.js" type="module"></script>
 </head>
 <body>
+  <!-- Loader -->
+  <div class="overlay-loader" id="overlay-loader"></div>
+  <div class="loader-container" id="loader-container">
+    <div class="loader-text">
+      <h1>Cursinho Gratuito</h1>
+      <p>Carregando área do professor...</p>
+    </div>
+    
+    <div id="loader">
+      <div class="ls-particles ls-part-1"></div>
+      <div class="ls-particles ls-part-2"></div>
+      <div class="ls-particles ls-part-3"></div>
+      <div class="ls-particles ls-part-4"></div>
+      <div class="ls-particles ls-part-5"></div>
+      <div class="lightsaber ls-left ls-green"></div>
+      <div class="lightsaber ls-right ls-red"></div>
+    </div>
+  </div>
+
   <div class="navbar">
     <div class="logo" onclick="window.location.href='../inicio/inicio.html'">
       <img src="../logo/logo.png" alt="Logo">
@@ -67,5 +87,6 @@
     import { coleta_dados } from '../../back-end/login_professor/login.js';
     window.coleta_dados = coleta_dados;
   </script>
+  <script src="../common/loader.js"></script>
 </body>
 </html>
