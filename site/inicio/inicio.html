@@ -1,29 +1,102 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inicio</title>
+    <title>Início - Cursinho Gratuito</title>
     <link rel="stylesheet" href="estilo_inicio.css">
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-      <div class="navbar">
+    <div class="navbar">
         <div class="logo" onclick="window.location.href='../inicio/inicio.html'">
-          <img src="../logo/logo.png" alt="Logo">
-          <strong>Início</strong>
+            <img src="../logo/logo.png" alt="Logo">
+            <strong>Início</strong>
         </div>
         <div class="nav-items">
-          <span><strong>T</strong></span>
+            <span class="theme-toggle"><strong>🌙</strong></span>
         </div>
         <div class="login_cadastro">
-            <strong onclick="window.location.href='../login_cadastro_aluno/login.html'">Aluno</strong>
-            <strong onclick="window.location.href='../login_professor/login.html'">Professor</strong>
-            
+            <strong class="login-btn" onclick="window.location.href='../login_cadastro_aluno/login.html'">Aluno</strong>
+            <strong class="login-btn" onclick="window.location.href='../login_professor/login.html'">Professor</strong>
         </div>
-      </div>
-    <div class="texto_inicio">
-      <img src="../imagens/sala de aula.jpg" alt="Imagem de fundo">
-      <p>Olá, somos uma iniciativa que ajuda pessoas que não tem dinheiro para comprar um cursinho. Nós oferecemos cursinho de graça para pessoas de todas as fachetarias. Essse projeto foi iniciado no ano de 2017, estamos com esse site para poder ter uma forma mais fácil de vcs alunos e para nós professores gerenciarmos as aulas e os horarios</p>
     </div>
+
+    <main class="container">
+        <section class="hero">
+            <div class="hero-content">
+                <div class="hero-image">
+                    <img src="../imagens/sala de aula.jpg" alt="Sala de aula do cursinho gratuito">
+                </div>
+                <div class="hero-text">
+                    <h1>Bem-vindo ao Cursinho Gratuito</h1>
+                    <p class="description">
+                        Olá! Somos uma iniciativa que ajuda pessoas que não têm condições de pagar um cursinho preparatório. 
+                        Oferecemos ensino de qualidade totalmente gratuito para estudantes de todas as áreas.
+                    </p>
+                    <p class="history">
+                        Este projeto foi iniciado em 2017 e desenvolvemos este site para facilitar o acesso dos alunos 
+                        e permitir que os professores gerenciem as aulas e horários de forma mais eficiente.
+                    </p>
+                    <div class="cta-buttons">
+                        <button class="cta-btn primary" onclick="window.location.href='../login_cadastro_aluno/login.html'">
+                            Área do Aluno
+                        </button>
+                        <button class="cta-btn secondary" onclick="window.location.href='../login_professor/login.html'">
+                            Área do Professor
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="features">
+            <div class="features-container">
+                <h2>Por que escolher nosso cursinho?</h2>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">📚</div>
+                        <h3>100% Gratuito</h3>
+                        <p>Educação de qualidade sem custos para o estudante</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">👨‍🏫</div>
+                        <h3>Professores Qualificados</h3>
+                        <p>Equipe dedicada e experiente em preparação para vestibular</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">⏰</div>
+                        <h3>Horários Flexíveis</h3>
+                        <p>Sistema online para gerenciar aulas e horários</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2024 Cursinho Gratuito. Educação para todos desde 2017.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Toggle de tema simples
+        document.querySelector('.theme-toggle').addEventListener('click', function() {
+            document.body.classList.toggle('dark-theme');
+            const icon = this.querySelector('strong');
+            icon.textContent = icon.textContent === '🌙' ? '☀️' : '🌙';
+        });
+
+        // Animação suave ao rolar
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+    </script>
 </body>
 </html>
