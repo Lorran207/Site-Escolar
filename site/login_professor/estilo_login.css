@@ -14,6 +14,7 @@ body {
   font-family: 'Jost', sans-serif;
   background: linear-gradient(to bottom, #1e88e5, white);
   padding: 20px;
+  transition: background 0.3s ease, color 0.3s ease;
 }
 
 /* Barra de navegação */
@@ -29,6 +30,7 @@ body {
   z-index: 1000;
   background: rgba(30, 136, 229, 0.1);
   backdrop-filter: blur(10px);
+  transition: background 0.3s ease;
 }
 
 .logo {
@@ -48,6 +50,14 @@ body {
   margin-right: 10px;
 }
 
+.nav-items {
+  display: flex;
+  align-items: center;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
 .aluno {
   cursor: pointer;
   padding: 8px 16px;
@@ -61,6 +71,25 @@ body {
   transform: translateY(-2px);
 }
 
+.theme-toggle {
+  cursor: pointer;
+  font-size: 1.2em;
+  padding: 8px;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+  background: rgba(255, 255, 255, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+}
+
+.theme-toggle:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: scale(1.1);
+}
+
 /* Container principal */
 .main {
   width: 100%;
@@ -71,6 +100,7 @@ body {
   box-shadow: 5px 20px 50px rgba(0, 0, 0, 0.3);
   margin-top: 80px;
   overflow: hidden;
+  transition: background 0.3s ease, box-shadow 0.3s ease;
 }
 
 /* Estilo das guias */
@@ -88,6 +118,7 @@ body {
   font-size: 1.4em;
   font-weight: bold;
   border-radius: 10px 10px 0 0;
+  transition: background 0.3s ease;
 }
 
 .tab-header .active {
@@ -110,6 +141,7 @@ body {
   margin-bottom: 25px;
   font-size: 2em;
   text-align: center;
+  transition: color 0.3s ease;
 }
 
 .form-group {
@@ -123,6 +155,7 @@ body {
   margin-bottom: 8px;
   font-size: 1em;
   font-weight: 500;
+  transition: color 0.3s ease;
 }
 
 input {
@@ -133,7 +166,7 @@ input {
   font-size: 1em;
   background: #f8f8f8;
   box-sizing: border-box;
-  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease, background 0.3s ease, color 0.3s ease;
 }
 
 input:focus {
@@ -144,6 +177,7 @@ input:focus {
 
 input::placeholder {
   color: #999;
+  transition: color 0.3s ease;
 }
 
 button {
@@ -185,6 +219,73 @@ button:active {
   z-index: 1002;
 }
 
+/* Estilos para o tema escuro */
+.dark-theme {
+  background: linear-gradient(to bottom, #0d47a1, #1a1a1a);
+  color: #e0e0e0;
+}
+
+.dark-theme .navbar {
+  background: rgba(13, 71, 161, 0.2);
+  backdrop-filter: blur(10px);
+}
+
+.dark-theme .aluno {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.dark-theme .aluno:hover {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+.dark-theme .theme-toggle {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.dark-theme .theme-toggle:hover {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+.dark-theme .main {
+  background: #272727;
+  box-shadow: 5px 20px 50px rgba(0, 0, 0, 0.5);
+}
+
+.dark-theme .tab-header {
+  background: #0d47a1;
+}
+
+.dark-theme .login-form h2 {
+  color: #e0e0e0;
+}
+
+.dark-theme .form-group label {
+  color: #e0e0e0;
+}
+
+.dark-theme input {
+  background: #3a3a3a;
+  border: 1px solid #444;
+  color: #e0e0e0;
+}
+
+.dark-theme input:focus {
+  border-color: #64b5f6;
+  box-shadow: 0 0 5px rgba(100, 181, 246, 0.3);
+}
+
+.dark-theme input::placeholder {
+  color: #888;
+}
+
+.dark-theme button {
+  background: #0d47a1;
+}
+
+.dark-theme button:hover {
+  background: #1565c0;
+}
+
 /* MEDIA QUERIES PARA RESPONSIVIDADE */
 
 /* Tablets (768px e abaixo) */
@@ -209,6 +310,13 @@ button:active {
   .aluno {
     padding: 6px 12px;
     font-size: 0.95em;
+  }
+
+  .theme-toggle {
+    font-size: 1.1em;
+    padding: 6px;
+    width: 32px;
+    height: 32px;
   }
 
   .main {
@@ -270,6 +378,13 @@ button:active {
     font-size: 0.9em;
   }
 
+  .theme-toggle {
+    font-size: 1em;
+    padding: 5px;
+    width: 28px;
+    height: 28px;
+  }
+
   .main {
     max-width: 100%;
     min-height: 400px;
@@ -324,6 +439,13 @@ button:active {
   .aluno {
     padding: 5px 8px;
     font-size: 0.85em;
+  }
+
+  .theme-toggle {
+    font-size: 0.9em;
+    padding: 4px;
+    width: 24px;
+    height: 24px;
   }
 
   .main {
@@ -397,11 +519,16 @@ button:active {
 @media (hover: none) and (pointer: coarse) {
   .logo:hover,
   .aluno:hover,
+  .theme-toggle:hover,
   button:hover {
     transform: none;
   }
 
   button:active {
     background: #2e16e5;
+  }
+
+  .dark-theme button:active {
+    background: #1565c0;
   }
 }
