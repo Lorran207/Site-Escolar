@@ -38,7 +38,12 @@
               <label for="password">Senha</label>
               <input type="password" id="password" name="pswd" placeholder="Digite sua senha" required>
             </div>
+            <div id="login-message" class="login-message"></div>
+            <div class="login-attempts">Tentativas restantes: <span id="attempts-left">3</span></div>
             <button type="button" onclick="coleta_dados()">Entrar</button>
+            <div class="forgot-password">
+              <a href="#" onclick="esqueciSenha()">Esqueci minha senha</a>
+            </div>
           </form>
         </div>
       </div>

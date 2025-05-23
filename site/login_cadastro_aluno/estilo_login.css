@@ -210,6 +210,61 @@ body.dark-theme button:hover {
   background: #64b5f6;
 }
 
+body.dark-theme button:active {
+  background: #64b5f6;
+}
+
+.login-message {
+  color: #e74c3c;
+  text-align: center;
+  font-size: 0.85em;
+  min-height: 15px;
+  width: 80%;
+  margin: 0 auto;
+}
+
+.login-attempts {
+  text-align: center;
+  font-size: 0.85em;
+  color: #666;
+  width: 80%;
+  margin: 5px auto;
+}
+
+.forgot-password {
+  text-align: center;
+  width: 80%;
+  margin: 5px auto;
+  font-size: 0.85em;
+}
+
+.forgot-password a {
+  color: #1e88e5;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.forgot-password a:hover {
+  color: #0d47a1;
+  text-decoration: underline;
+}
+
+body.dark-theme .forgot-password a {
+  color: #64b5f6;
+}
+
+body.dark-theme .forgot-password a:hover {
+  color: #bbdefb;
+}
+
+body.dark-theme .login-attempts {
+  color: #bbb;
+}
+
+body.dark-theme .login-message {
+  color: #ff6b6b;
+}
+
 /* Seção de login */
 .login {
   height: 460px;

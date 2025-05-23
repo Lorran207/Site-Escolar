@@ -204,6 +204,54 @@ button:active {
   transform: translateY(0);
 }
 
+.login-message {
+  color: #e74c3c;
+  text-align: center;
+  margin-top: 10px;
+  font-size: 0.9em;
+  min-height: 20px;
+}
+
+.login-attempts {
+  text-align: center;
+  margin-top: 5px;
+  font-size: 0.9em;
+  color: #666;
+}
+
+.forgot-password {
+  text-align: center;
+  margin-top: 15px;
+  font-size: 0.9em;
+}
+
+.forgot-password a {
+  color: #1e88e5;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.forgot-password a:hover {
+  color: #0d47a1;
+  text-decoration: underline;
+}
+
+.dark-theme .forgot-password a {
+  color: #64b5f6;
+}
+
+.dark-theme .forgot-password a:hover {
+  color: #bbdefb;
+}
+
+.dark-theme .login-attempts {
+  color: #bbb;
+}
+
+.dark-theme .login-message {
+  color: #ff6b6b;
+}
+
 /* Overlay e loader */
 .overlay {
   position: fixed;
