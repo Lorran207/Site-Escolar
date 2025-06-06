@@ -9,37 +9,7 @@ export function coleta_dados() {
     password: document.getElementById("password").value,
     professor: true
   }
-
-  const messageEl = document.getElementById("login-message");
-  const attemptsEl = document.getElementById("attempts-left");
-  
-  if (!dados.username || !dados.password) {
-    messageEl.textContent = "Preencha todos os campos!";
-    return;
-  }
-
-  if (loginAttempts > 0) {
-    // Verifica credenciais
-    const loginSuccess = compara_dados(dados);
-    
-    if (!loginSuccess) {
-      loginAttempts--;
-      attemptsEl.textContent = loginAttempts;
-      
-      if (loginAttempts === 0) {
-        messageEl.textContent = "Número máximo de tentativas excedido!";
-        document.querySelector("button").disabled = true;
-        setTimeout(() => {
-          loginAttempts = 3;
-          attemptsEl.textContent = loginAttempts;
-          document.querySelector("button").disabled = false;
-          messageEl.textContent = "";
-        }, 30000); // 30 segundos de bloqueio
-      } else {
-        messageEl.textContent = "Email ou senha incorretos!";
-      }
-    }
-  }
+  compara_dados(dados)
 }
 
 export function esqueciSenha() {
@@ -62,3 +32,4 @@ document.addEventListener("DOMContentLoaded", () => {
   loginAttempts = 3;
   document.getElementById("attempts-left").textContent = loginAttempts;
 });
+window.coleta_dados = coleta_dados;

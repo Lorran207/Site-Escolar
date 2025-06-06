@@ -10,10 +10,14 @@
 <body>
     <div class="navbar">
         <div class="logo" onclick="window.location.href='../inicio/inicio.html'">
-            <img src="../logo/logo.png" alt="Logo">
-            <strong>Início</strong>
+            <img src="../logo/logo.webp" alt="Logo">
+            <strong>Studi<i>+</i></strong>
         </div>
         <div class="nav-items">
+            <div class="datetime-info">
+                <div class="current-date" id="currentDate"></div>
+                <div class="current-time" id="currentTime"></div>
+            </div>
             <span class="theme-toggle"><strong>🌙</strong></span>
         </div>
         <div class="login_cadastro">
@@ -29,13 +33,13 @@
                     <img src="../imagens/sala de aula.jpg" alt="Sala de aula do cursinho gratuito">
                 </div>
                 <div class="hero-text">
-                    <h1>Bem-vindo ao Cursinho Gratuito</h1>
+                    <h1>Bem-vindo ao Studi<i>+</i></h1>
                     <p class="description">
-                        Olá! Somos uma iniciativa que ajuda pessoas que não têm condições de pagar um cursinho preparatório. 
-                        Oferecemos ensino de qualidade totalmente gratuito para estudantes de todas as áreas.
+                        Studi<i>+</i> é uma plataforma gratuita com iniciativa do Colégio Sanquim, que visa proporcionar educação de qualidade para todos.
+                        Sua missão é facilitar os processos acadêmicos tanto para alunos quanto para professores, promovendo mais produtividade e organização. Assim, todos podem focar no principal objetivo: a aprovação!
                     </p>
                     <p class="history">
-                        Este projeto foi iniciado em 2017 e desenvolvemos este site para facilitar o acesso dos alunos 
+                        O projeto Colégio Sanquim foi iniciado em 2016 e desenvolvemos este site para facilitar o acesso dos alunos 
                         e permitir que os professores gerenciem as aulas e horários de forma mais eficiente.
                     </p>
                     <div class="cta-buttons">
@@ -76,11 +80,37 @@
 
     <footer class="footer">
         <div class="footer-content">
-            <p>&copy; 2024 Cursinho Gratuito. Educação para todos desde 2017.</p>
+            <p>&copy; 2025 Studi<i>+</i>. Educação para todos desde 2016.</p>
         </div>
     </footer>
 
     <script>
+        // Função para atualizar data e hora
+        function updateDateTime() {
+            const now = new Date();
+            
+            const dateOptions = { 
+                weekday: 'long', 
+                year: 'numeric', 
+                month: 'long', 
+                day: 'numeric' 
+            };
+            const dateString = now.toLocaleDateString('pt-BR', dateOptions);
+            
+            const timeOptions = { 
+                hour: '2-digit', 
+                minute: '2-digit', 
+                second: '2-digit' 
+            };
+            const timeString = now.toLocaleTimeString('pt-BR', timeOptions);
+            
+            document.getElementById('currentDate').textContent = dateString;
+            document.getElementById('currentTime').textContent = timeString;
+        }
+
+        updateDateTime();
+        setInterval(updateDateTime, 1000);
+
         // Toggle de tema simples
         document.querySelector('.theme-toggle').addEventListener('click', function() {
             document.body.classList.toggle('dark-theme');

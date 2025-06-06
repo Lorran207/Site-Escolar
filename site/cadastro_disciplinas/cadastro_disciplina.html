@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cadastro de Disciplinas</title>
+  <link rel="stylesheet" href="cadastro_disciplina.css">
+</head>
+<body>
+  <div class="navbar">
+    <div class="logo" onclick="goToHome()">
+      <img src="../logo/logo.webp" alt="Logo">
+      <strong>Início</strong>
+    </div>
+    <div class="nav-items">
+      <span class="theme-toggle" title="Mudar para tema escuro">🌙</span>
+    </div>
+    <div class="aluno">
+      <strong onclick="goToAluno()">Aluno</strong>
+    </div>
+  </div>
+
+  <div class="main">
+    <!-- Formulário de Cadastro de Disciplinas -->
+    <div class="tabs">
+      <div class="tab-header">
+        <div class="active">📚 Cadastro de Disciplinas</div>
+      </div>
+      <div class="tab-content">
+        <h2 class="form-title">Nova Disciplina</h2>
+        <form id="cadastroForm">
+          <div class="form-group">
+            <label for="nome">Nome da Disciplina *</label>
+            <input type="text" id="nome" name="nome" placeholder="Ex: Matemática Aplicada" required>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="codigo">Código *</label>
+              <input type="text" id="codigo" name="codigo" placeholder="Ex: MAT001" required>
+            </div>
+            <div class="form-group">
+              <label for="cargaHoraria">Carga Horária *</label>
+              <input type="number" id="cargaHoraria" name="cargaHoraria" placeholder="Horas" min="1" required>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="creditos">Créditos</label>
+              <input type="number" id="creditos" name="creditos" placeholder="Ex: 4" min="1">
+            </div>
+            <div class="form-group">
+              <label for="periodo">Período/Semestre</label>
+              <input type="text" id="periodo" name="periodo" placeholder="Ex: 2024.1">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="professor">Professor Responsável *</label>
+            <input type="text" id="professor" name="professor" placeholder="Nome do professor" required>
+          </div>
+
+          <div class="form-group">
+            <label for="departamento">Departamento</label>
+            <input type="text" id="departamento" name="departamento" placeholder="Ex: Departamento de Ciências Exatas">
+          </div>
+
+          <div class="form-group">
+            <label for="ementa">Ementa/Descrição</label>
+            <textarea id="ementa" name="ementa" placeholder="Descrição do conteúdo programático da disciplina"></textarea>
+          </div>
+
+          <div id="form-message" class="form-message"></div>
+
+          <button type="button" onclick="cadastrarDisciplina()">📚 Cadastrar Disciplina</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Lista de Disciplinas Cadastradas -->
+    <div class="lista-cadastrados">
+      <div class="lista-header">
+        📚 Disciplinas Cadastradas
+      </div>
+      <div class="lista-content" id="listaContent">
+        <!-- Disciplinas serão adicionadas dinamicamente aqui -->
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Variável para armazenar o tema atual
+    let currentTheme = 'light';
+
+    // Array para armazenar as disciplinas cadastradas
+    let disciplinasCadastradas = [];
+
+    // Inicialização
+    document.addEventListener('DOMContentLoaded', function() {
+      // Configurar tema
+      const themeToggle = document.querySelector('.theme-toggle');
+      if (themeToggle) {
+        themeToggle.addEventListener('click', toggleTheme);
+      }
+
+      // Renderizar lista inicial
+      renderizarLista();
+    });
+
+    // Função para alternar entre temas
+    function toggleTheme() {
+      const isDarkTheme = document.body.classList.toggle('dark-theme');
+      currentTheme = isDarkTheme ? 'dark' : 'light';
+      updateThemeIcon(isDarkTheme);
+    }
+
+    // Função para atualizar o ícone do tema
+    function updateThemeIcon(isDarkTheme) {
+      const themeToggle = document.querySelector('.theme-toggle');
+      if (themeToggle) {
+        themeToggle.textContent = isDarkTheme ? '☀️' : '🌙';
+        themeToggle.setAttribute('title', isDarkTheme ? 'Mudar para tema claro' : 'Mudar para tema escuro');
+      }
+    }
+
+    // Função para cadastrar nova disciplina
+    function cadastrarDisciplina() {
+      const form = document.getElementById('cadastroForm');
+      const formData = new FormData(form);
+      const messageDiv = document.getElementById('form-message');
+
+      // Validações básicas
+      if (!formData.get('nome') || !formData.get('codigo') || !formData.get('cargaHoraria') || !formData.get('professor')) {
+        showMessage('Por favor, preencha todos os campos obrigatórios (*).', 'error');
+        return;
+      }
+
+      // Verificar se o código já existe
+      const codigoExistente = disciplinasCadastradas.find(disciplina => disciplina.codigo === formData.get('codigo'));
+      if (codigoExistente) {
+        showMessage('Este código já está em uso. Por favor, escolha outro.', 'error');
+        return;
+      }
+
+      // Criar nova disciplina
+      const novaDisciplina = {
+        id: Date.now(),
+        nome: formData.get('nome'),
+        codigo: formData.get('codigo'),
+        cargaHoraria: formData.get('cargaHoraria'),
+        creditos: formData.get('creditos'),
+        periodo: formData.get('periodo'),
+        professor: formData.get('professor'),
+        departamento: formData.get('departamento'),
+        ementa: formData.get('ementa'),
+        dataCadastro: new Date().toLocaleDateString('pt-BR')
+      };
+
+      // Adicionar à lista
+      disciplinasCadastradas.push(novaDisciplina);
+
+      // Limpar formulário
+      form.reset();
+
+      // Mostrar mensagem de sucesso
+      showMessage('Disciplina cadastrada com sucesso!', 'success');
+
+      // Renderizar lista atualizada
+      renderizarLista();
+    }
+
+    // Função para mostrar mensagens
+    function showMessage(text, type) {
+      const messageDiv = document.getElementById('form-message');
+      messageDiv.textContent = text;
+      messageDiv.className = `form-message ${type}`;
+      messageDiv.style.display = 'block';
+
+      setTimeout(() => {
+        messageDiv.style.display = 'none';
+      }, 5000);
+    }
+
+    // Função para renderizar a lista de disciplinas cadastradas
+    function renderizarLista() {
+      const listaContent = document.getElementById('listaContent');
+
+      if (disciplinasCadastradas.length === 0) {
+        listaContent.innerHTML = '<p style="text-align: center; color: #379091; font-style: italic; padding: 20px;">📚 Nenhuma disciplina cadastrada ainda.</p>';
+        return;
+      }
+
+      const html = disciplinasCadastradas.map(disciplina => `
+        <div class="item-card">
+          <h3>📚 ${disciplina.nome}</h3>
+          <p><strong>Código:</strong> ${disciplina.codigo}</p>
+          <p><strong>Professor:</strong> ${disciplina.professor}</p>
+          <p><strong>Carga Horária:</strong> ${disciplina.cargaHoraria}h</p>
+          ${disciplina.creditos ? `<p><strong>Créditos:</strong> ${disciplina.creditos}</p>` : ''}
+          ${disciplina.periodo ? `<p><strong>Período:</strong> ${disciplina.periodo}</p>` : ''}
+          ${disciplina.departamento ? `<p><strong>Departamento:</strong> ${disciplina.departamento}</p>` : ''}
+          ${disciplina.ementa ? `<p><strong>Ementa:</strong> ${disciplina.ementa}</p>` : ''}
+          <p><strong>Cadastrado em:</strong> ${disciplina.dataCadastro}</p>
+          <div class="item-actions">
+            <button class="btn-small btn-edit" onclick="editarDisciplina(${disciplina.id})">✏️ Editar</button>
+            <button class="btn-small btn-delete" onclick="excluirDisciplina(${disciplina.id})">🗑️ Excluir</button>
+          </div>
+        </div>
+      `).join('');
+
+      listaContent.innerHTML = html;
+    }
+
+    // Função para editar disciplina
+    function editarDisciplina(id) {
+      const disciplina = disciplinasCadastradas.find(d => d.id === id);
+      if (disciplina) {
+        // Preencher o formulário com os dados da disciplina
+        document.getElementById('nome').value = disciplina.nome;
+        document.getElementById('codigo').value = disciplina.codigo;
+        document.getElementById('cargaHoraria').value = disciplina.cargaHoraria;
+        document.getElementById('creditos').value = disciplina.creditos || '';
+        document.getElementById('periodo').value = disciplina.periodo || '';
+        document.getElementById('professor').value = disciplina.professor;
+        document.getElementById('departamento').value = disciplina.departamento || '';
+        document.getElementById('ementa').value = disciplina.ementa || '';
+
+        // Remover a disciplina da lista (será re-adicionada quando salvar)
+        disciplinasCadastradas = disciplinasCadastradas.filter(d => d.id !== id);
+        renderizarLista();
+
+        // Scroll para o formulário
+        document.querySelector('.tabs').scrollIntoView({ behavior: 'smooth' });
+
+        showMessage('Disciplina carregada para edição. Faça as alterações e clique em Cadastrar.', 'success');
+      }
+    }
+
+    // Função para excluir disciplina
+    function excluirDisciplina(id) {
+      if (confirm('Tem certeza que deseja excluir esta disciplina?')) {
+        disciplinasCadastradas = disciplinasCadastradas.filter(disciplina => disciplina.id !== id);
+        renderizarLista();
+        showMessage('Disciplina excluída com sucesso!', 'success');
+      }
+    }
+
+    // Funções de navegação
+    function goToHome() {
+      alert('Redirecionando para a página inicial...');
+      // window.location.href = '../inicio/inicio.html';
+    }
+
+    function goToAluno() {
+      alert('Redirecionando para a área do aluno...');
+      // window.location.href = '../login_cadastro_aluno/login.html';
+    }
+  </script>
+</body>
+</html>

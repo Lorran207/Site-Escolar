@@ -7,7 +7,7 @@ export function compara_dados(dados) {
   
   if (dados.username === usernameTeste && dados.password === passwordTeste && dados.professor == professorTeste) {
     console.log("Login bem-sucedido!");
-    window.location.href = "../../site/tela_inicio/professor/Aba-fessores.html";
+    window.location.href = "../../site/tela_dashb/professor/Aba-fessores.html";
     return true;
   } else {
     console.log("Login ou senha incorretos.");

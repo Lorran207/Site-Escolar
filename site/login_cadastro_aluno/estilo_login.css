@@ -1,4 +1,4 @@
-/* Reset e configurações base */
+/* reset da página */
 * {
   margin: 0;
   padding: 0;
@@ -12,18 +12,48 @@ body {
   align-items: center;
   min-height: 100vh;
   font-family: 'Jost', sans-serif;
-  background: linear-gradient(to bottom, #1e88e5, white);
+  background: linear-gradient(135deg, #FFC544 0%, #FFD984 50%, #FFC544 100%);
   padding: 20px;
   transition: all 0.3s ease;
+  position: relative;
+  overflow-x: hidden;
 }
 
-/* Tema escuro */
+/* Ondas decorativas sobrepostas */
+body::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 200px;
+  background: linear-gradient(135deg, rgba(255, 197, 68, 0.8) 0%, rgba(255, 217, 132, 0.6) 50%, rgba(255, 197, 68, 0.4) 100%);
+  clip-path: ellipse(100% 100% at 50% 0%);
+  z-index: -2;
+}
+body::after {
+  content: '';
+  position: absolute;
+  top: -50px;
+  left: 0;
+  width: 100%;
+  height: 250px;
+  background: linear-gradient(45deg, rgba(255, 217, 132, 0.7) 0%, rgba(255, 197, 68, 0.5) 50%, rgba(255, 217, 132, 0.3) 100%);
+  clip-path: ellipse(80% 100% at 30% 0%);
+  z-index: -1;
+}
 body.dark-theme {
-  background: linear-gradient(to bottom, #0d47a1, #1a1a1a);
+  background: linear-gradient(135deg, #2c2c2c 0%, #1a1a1a 50%, #333 100%);
   color: #e0e0e0;
 }
+body.dark-theme::before {
+  background: linear-gradient(135deg, rgba(55, 144, 145, 0.8) 0%, rgba(55, 144, 145, 0.6) 50%, rgba(55, 144, 145, 0.4) 100%);
+}
+body.dark-theme::after {
+  background: linear-gradient(45deg, rgba(55, 144, 145, 0.7) 0%, rgba(55, 144, 145, 0.5) 50%, rgba(55, 144, 145, 0.3) 100%);
+}
 
-/* Barra de navegação */
+/* Barra de navegação - Tema Branco */
 .navbar {
   position: fixed;
   top: 0;
@@ -31,22 +61,28 @@ body.dark-theme {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 10px 20px;
-  background: rgba(30, 136, 229, 0.1);
-  backdrop-filter: blur(10px);
-  color: white;
+  padding: 15px 25px;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(15px);
+  color: #2c3e50;
   z-index: 1000;
+  border-bottom: 1px solid rgba(44, 62, 80, 0.1);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
+/* Tema escuro da navbar - Azul escuro */
 body.dark-theme .navbar {
-  background: rgba(13, 71, 161, 0.2);
+  background: rgba(44, 62, 80, 0.95);
+  color: #ffffff;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
 }
 
 .logo {
   display: flex;
   cursor: pointer;
   align-items: center;
-  gap: 10px;
+  gap: 15px;
   transition: all 0.3s ease;
 }
 
@@ -55,8 +91,51 @@ body.dark-theme .navbar {
 }
 
 .logo img {
-  height: 30px;
+  height: 55px;
+  width: auto;
   margin-right: 10px;
+  filter: drop-shadow(2px 2px 6px rgba(44, 62, 80, 0.3)) 
+          drop-shadow(0 0 8px rgba(255, 255, 255, 0.6))
+          contrast(1.1) brightness(1.05);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 4px;
+  border: 2px solid rgba(44, 62, 80, 0.15);
+  transition: all 0.3s ease;
+}
+.logo img:hover {
+  filter: drop-shadow(3px 3px 10px rgba(44, 62, 80, 0.5)) 
+          drop-shadow(0 0 12px rgba(255, 255, 255, 0.8))
+          contrast(1.2) brightness(1.1);
+  transform: scale(1.05);
+  border-color: rgba(44, 62, 80, 0.3);
+}
+
+body.dark-theme .logo img {
+  background: rgba(255, 255, 255, 0.95);
+  border-color: rgba(255, 255, 255, 0.2);
+  filter: drop-shadow(2px 2px 8px rgba(0, 0, 0, 0.6)) 
+          drop-shadow(0 0 10px rgba(255, 255, 255, 0.3))
+          contrast(1.15) brightness(1.1);
+}
+
+body.dark-theme .logo img:hover {
+  filter: drop-shadow(3px 3px 12px rgba(0, 0, 0, 0.8)) 
+          drop-shadow(0 0 15px rgba(255, 255, 255, 0.5))
+          contrast(1.25) brightness(1.2);
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+.logo strong {
+  font-size: 1.2em;
+  font-weight: 600;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+  color: #2c3e50;
+}
+
+body.dark-theme .logo strong {
+  color: #ffffff;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
 }
 
 .nav-items {
@@ -69,45 +148,71 @@ body.dark-theme .navbar {
 
 .nav-items span {
   cursor: pointer;
-  padding: 8px;
+  padding: 10px;
   border-radius: 50%;
   transition: all 0.3s ease;
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(44, 62, 80, 0.1);
+  color: #2c3e50;
 }
 
 .nav-items span:hover {
-  background: rgba(255, 255, 255, 0.3);
+  background: rgba(44, 62, 80, 0.2);
   transform: scale(1.1);
+}
+
+body.dark-theme .nav-items span {
+  background: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+}
+
+body.dark-theme .nav-items span:hover {
+  background: rgba(255, 255, 255, 0.2);
 }
 
 .professor {
   cursor: pointer;
-  padding: 8px 16px;
-  background: rgba(255, 255, 255, 0.2);
-  border-radius: 20px;
+  padding: 10px 18px;
+  background: rgba(44, 62, 80, 0.1);
+  border-radius: 25px;
   transition: all 0.3s ease;
+  font-weight: 500;
+  color: #2c3e50;
+  border: 1px solid rgba(44, 62, 80, 0.2);
 }
 
 .professor:hover {
-  background: rgba(255, 255, 255, 0.3);
+  background: rgba(44, 62, 80, 0.2);
   transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(44, 62, 80, 0.2);
 }
 
-/* Container principal */
+body.dark-theme .professor {
+  background: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+body.dark-theme .professor:hover {
+  background: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
 .main {
   width: 100%;
   max-width: 350px;
   height: 500px;
-  background: linear-gradient(to bottom, #1e88e5, #42a5f5);
+  background: linear-gradient(135deg, #FFC544 0%, #FFD984 100%);
   overflow: hidden;
-  border-radius: 10px;
-  box-shadow: 5px 20px 50px rgba(0, 0, 0, 0.3);
-  margin-top: 80px;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(55, 144, 145, 0.3);
+  margin-top: 90px;
   position: relative;
+  border: 2px solid rgba(55, 144, 145, 0.1);
 }
 
 body.dark-theme .main {
-  background: linear-gradient(to bottom, #0d47a1, #1565c0);
+  background: linear-gradient(135deg, #379091 0%, #2c5f5f 100%);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
 }
 
 /* Checkbox oculto */
@@ -122,9 +227,9 @@ body.dark-theme .main {
   height: 100%;
 }
 
-/* Labels */
+
 label {
-  color: #fff;
+  color: #379091;
   font-size: 2.3em;
   justify-content: center;
   display: flex;
@@ -132,37 +237,43 @@ label {
   font-weight: bold;
   cursor: pointer;
   transition: 0.5s ease-in-out;
+  text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.3);
 }
 
-/* Inputs */
+body.dark-theme label {
+  color: #FFD984;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
 input {
   width: 80%;
   height: auto;
-  background: #f5f5f5;
+  background: rgba(255, 255, 255, 0.9);
   justify-content: center;
   display: flex;
   margin: 15px auto;
   padding: 12px;
-  border: none;
+  border: 2px solid rgba(55, 144, 145, 0.2);
   outline: none;
-  border-radius: 5px;
+  border-radius: 8px;
   font-size: 1em;
   transition: all 0.3s ease;
 }
 
 input:focus {
   background: #fff;
-  box-shadow: 0 0 8px rgba(30, 136, 229, 0.3);
+  box-shadow: 0 0 12px rgba(55, 144, 145, 0.4);
   transform: scale(1.02);
+  border-color: #379091;
 }
-
 input::placeholder {
-  color: #999;
+  color: #666;
 }
 
 body.dark-theme input {
-  background: #333;
+  background: rgba(44, 44, 44, 0.9);
   color: #e0e0e0;
+  border-color: rgba(255, 217, 132, 0.2);
 }
 
 body.dark-theme input::placeholder {
@@ -171,10 +282,11 @@ body.dark-theme input::placeholder {
 
 body.dark-theme input:focus {
   background: #444;
-  box-shadow: 0 0 8px rgba(100, 181, 246, 0.4);
+  box-shadow: 0 0 12px rgba(255, 217, 132, 0.4);
+  border-color: #FFD984;
 }
 
-/* Botões */
+
 button {
   width: 80%;
   height: 40px;
@@ -182,20 +294,21 @@ button {
   justify-content: center;
   display: block;
   color: #fff;
-  background: #1e88e5;
+  background: #379091;
   font-size: 1em;
   font-weight: bold;
   outline: none;
   border: none;
-  border-radius: 5px;
+  border-radius: 8px;
   transition: all 0.3s ease;
   cursor: pointer;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
 }
 
 button:hover {
-  background: #1976d2;
+  background: #2c5f5f;
   transform: translateY(-2px);
-  box-shadow: 0 4px 15px rgba(30, 136, 229, 0.4);
+  box-shadow: 0 4px 15px rgba(55, 144, 145, 0.4);
 }
 
 button:active {
@@ -203,15 +316,12 @@ button:active {
 }
 
 body.dark-theme button {
-  background: #42a5f5;
+  background: #FFD984;
+  color: #2c2c2c;
 }
 
 body.dark-theme button:hover {
-  background: #64b5f6;
-}
-
-body.dark-theme button:active {
-  background: #64b5f6;
+  background: #FFC544;
 }
 
 .login-message {
@@ -226,66 +336,69 @@ body.dark-theme button:active {
 .login-attempts {
   text-align: center;
   font-size: 0.85em;
-  color: #666;
+  color: #379091;
   width: 80%;
   margin: 5px auto;
+}
+
+body.dark-theme .login-attempts {
+  color: #FFD984;
 }
 
 .forgot-password {
-  text-align: center;
-  width: 80%;
-  margin: 5px auto;
-  font-size: 0.85em;
+text-align: center;
+width: 80%;
+margin: 10px auto 0 auto;
+font-size: 0.85em;
+position: relative;
+bottom: 10px; /
 }
 
 .forgot-password a {
-  color: #1e88e5;
+  color: #379091;
   text-decoration: none;
   transition: color 0.3s ease;
+  font-weight: 500;
 }
 
 .forgot-password a:hover {
-  color: #0d47a1;
+  color: #2c5f5f;
   text-decoration: underline;
 }
 
 body.dark-theme .forgot-password a {
-  color: #64b5f6;
+  color: #FFD984;
 }
 
 body.dark-theme .forgot-password a:hover {
-  color: #bbdefb;
-}
-
-body.dark-theme .login-attempts {
-  color: #bbb;
+  color: #FFC544;
 }
 
 body.dark-theme .login-message {
   color: #ff6b6b;
 }
 
-/* Seção de login */
 .login {
   height: 460px;
-  background: #fff;
+  background: rgba(255, 255, 255, 0.95);
   border-radius: 60% / 10%;
   transform: translateY(-180px);
   transition: 0.8s ease-in-out;
+  backdrop-filter: blur(10px);
 }
 
 body.dark-theme .login {
-  background: #2c2c2c;
+  background: rgba(44, 44, 44, 0.95);
 }
 
 .login label {
-  color: #1e88e5;
+  color: #379091;
   transform: scale(0.6);
   padding-top: 15px;
 }
 
 body.dark-theme .login label {
-  color: #64b5f6;
+  color: #FFD984;
 }
 
 /* Estados do checkbox */
@@ -301,22 +414,34 @@ body.dark-theme .login label {
   transform: scale(0.6);
 }
 
-/* Overlay e loader */
 .overlay {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.7);
+  background: rgba(55, 144, 145, 0.3);
   z-index: 1001;
 }
 
 .loader {
   z-index: 1002;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 50px;
+  height: 50px;
+  border: 4px solid rgba(255, 197, 68, 0.3);
+  border-top: 4px solid #FFC544;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
 }
 
-/* MEDIA QUERIES PARA RESPONSIVIDADE */
+@keyframes spin {
+  0% { transform: translate(-50%, -50%) rotate(0deg); }
+  100% { transform: translate(-50%, -50%) rotate(360deg); }
+}
 
 /* Tablets (768px e abaixo) */
 @media screen and (max-width: 768px) {
@@ -325,31 +450,35 @@ body.dark-theme .login label {
   }
 
   .navbar {
-    padding: 8px 15px;
+    padding: 12px 20px;
   }
 
   .logo img {
-    height: 25px;
+    height: 50px;
     margin-right: 8px;
   }
 
   .logo {
-    gap: 8px;
+    gap: 12px;
+  }
+
+  .logo strong {
+    font-size: 1.1em;
   }
 
   .professor {
-    padding: 6px 12px;
+    padding: 8px 15px;
     font-size: 0.95em;
   }
 
   .nav-items span {
-    padding: 6px;
+    padding: 8px;
   }
 
   .main {
     max-width: 90%;
     height: 450px;
-    margin-top: 70px;
+    margin-top: 85px;
   }
 
   label {
@@ -374,44 +503,44 @@ body.dark-theme .login label {
   }
 }
 
-/* Smartphones (480px e abaixo) */
+/* celulares(480px e abaixo) */
 @media screen and (max-width: 480px) {
   body {
     padding: 10px;
   }
 
   .navbar {
-    padding: 6px 10px;
+    padding: 10px 15px;
   }
 
   .logo img {
-    height: 20px;
-    margin-right: 5px;
+    height: 45px;
+    margin-right: 8px;
   }
 
   .logo {
-    gap: 5px;
+    gap: 10px;
   }
 
   .logo strong {
-    font-size: 0.9em;
+    font-size: 1em;
   }
 
   .professor {
-    padding: 6px 10px;
+    padding: 8px 12px;
     font-size: 0.9em;
   }
 
   .nav-items span {
-    padding: 5px;
+    padding: 6px;
     font-size: 0.9em;
   }
 
   .main {
     max-width: 100%;
     height: 420px;
-    margin-top: 60px;
-    border-radius: 8px;
+    margin-top: 70px;
+    border-radius: 12px;
   }
 
   label {
@@ -446,22 +575,26 @@ body.dark-theme .login label {
 /* Telas muito pequenas (320px e abaixo) */
 @media screen and (max-width: 320px) {
   .navbar {
-    padding: 5px 8px;
+    padding: 8px 12px;
+  }
+
+  .logo img {
+    height: 40px;
   }
 
   .logo strong {
-    font-size: 0.85em;
+    font-size: 0.9em;
   }
 
   .professor {
-    padding: 5px 8px;
+    padding: 6px 10px;
     font-size: 0.85em;
   }
 
   .main {
     height: 400px;
-    margin-top: 55px;
-    border-radius: 6px;
+    margin-top: 65px;
+    border-radius: 10px;
   }
 
   label {
@@ -534,6 +667,10 @@ body.dark-theme .login label {
     height: 520px;
   }
 
+  .logo img {
+    height: 60px;
+  }
+
   label {
     font-size: 2.4em;
     margin: 55px 0 35px 0;
@@ -566,10 +703,10 @@ body.dark-theme .login label {
   }
 
   button:active {
-    background: #1976d2;
+    background: #379091;
   }
 
   body.dark-theme button:active {
-    background: #64b5f6;
+    background: #FFC544;
   }
 }

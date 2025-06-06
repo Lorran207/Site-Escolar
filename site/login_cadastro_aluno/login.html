@@ -13,7 +13,7 @@
 <body>
   <div class="navbar">
     <div class="logo" onclick="window.location.href='../inicio/inicio.html'">
-      <img src="../logo/logo.png" alt="Logo">
+      <img src="../logo/logo.webp" alt="Logo">
       <strong>Início</strong>
     </div>
     <div class="nav-items">
@@ -23,10 +23,10 @@
       <strong onclick="window.location.href='../login_professor/login.html'">Professor</strong>
     </div>
   </div>
-  
+
   <div class="main">
     <input type="checkbox" id="chk" aria-hidden="true">
-    
+
     <div class="signup">
       <form>
         <label for="chk" aria-hidden="true">Cadastro</label>
@@ -36,7 +36,7 @@
         <button type="button">Cadastrar-se</button>
       </form>
     </div>
-    
+
     <div class="login">
       <form>
         <label for="chk" aria-hidden="true">Login</label>
@@ -51,14 +51,14 @@
       </form>
     </div>
   </div>
-  
+
   <div class="overlay" style="display: none;"></div>
   <span class="loader" style="display: none;"></span>
-  
+
   <script>
     document.addEventListener('DOMContentLoaded', function() {
       const loader = document.querySelector('.loader');
-      
+
       document.querySelector('.logo').addEventListener('click', function(e) {
         e.preventDefault();
         const overlay = document.querySelector('.overlay');
@@ -81,7 +81,7 @@
       }
     }
   </script>
-  
+
   <script type="module">
     import { coleta_dados } from '../../back-end/login_cadastro_aluno/login.js';
     window.coleta_dados = coleta_dados;

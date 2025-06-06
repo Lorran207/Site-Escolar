@@ -7,13 +7,13 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  border-top: 4px solid black;
+  border-top: 4px solid #379091; /* Cor de contraste para o loader */
   border-right: 4px solid transparent;
   box-sizing: border-box;
   animation: rotation 1s linear infinite;
 }
 .loader::after {
-  content: '';  
+  content: '';
   box-sizing: border-box;
   position: absolute;
   left: 0;
@@ -21,7 +21,7 @@
   width: 48px;
   height: 48px;
   border-radius: 50%;
-  border-left: 4px solid white;
+  border-left: 4px solid #FFC544; /* Cor principal para o loader */
   border-bottom: 4px solid transparent;
   animation: rotation 0.5s linear infinite reverse;
 }
@@ -34,7 +34,6 @@
   background-color: rgba(0, 0, 0, 0.7);
   z-index: 9998;
 }
-
 @keyframes rotation {
   0% {
     transform: rotate(0deg);
@@ -42,4 +41,4 @@
   100% {
     transform: rotate(360deg);
   }
-} 
+}

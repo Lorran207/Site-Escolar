@@ -11,7 +11,7 @@
 <body>
   <div class="navbar">
     <div class="logo" onclick="window.location.href='../inicio/inicio.html'">
-      <img src="../logo/logo.png" alt="Logo">
+      <img src="../logo/logo.webp" alt="Logo">
       <strong>Início</strong>
     </div>
     <div class="nav-items">
@@ -41,8 +41,8 @@
             <div id="login-message" class="login-message"></div>
             <div class="login-attempts">Tentativas restantes: <span id="attempts-left">3</span></div>
             <button type="button" onclick="coleta_dados()">Entrar</button>
-            <div class="forgot-password">
-              <a href="#" onclick="esqueciSenha()">Esqueci minha senha</a>
+            <div class="forgot-password" >
+              <a href="../Pagina_esqueciSenha/Esquecisenha.html" onclick="esqueciSenha()">Esqueci minha senha</a>
             </div>
           </form>
         </div>
@@ -51,25 +51,26 @@
   </div>
   <div class="overlay" style="display: none;"></div>
   <span class="loader" style="display: none;"></span>
-  
+
   <script>
     // Função para inicializar o sistema de temas
     document.addEventListener('DOMContentLoaded', function() {
-      // Verificar se existe um tema salvo no localStorage
-      const savedTheme = localStorage.getItem('theme');
-      
+      // Verificar se existe um tema salvo (usando variável em memória ao invés de localStorage)
+      let savedTheme = 'light'; // Default theme
+
       // Aplicar o tema salvo ou o tema padrão (claro)
       if (savedTheme === 'dark') {
         document.body.classList.add('dark-theme');
         updateThemeIcon(true);
       }
-      
+
       // Adicionar listener para o botão de alternar tema
       const themeToggle = document.querySelector('.theme-toggle');
       if (themeToggle) {
         themeToggle.addEventListener('click', toggleTheme);
       }
-      
+
+
       // Configuração do loader para navegação
       const loader = document.querySelector('.loader');
       document.querySelector('.logo').addEventListener('click', function(e) {
@@ -83,13 +84,16 @@
       });
     });
 
+    // Variável para armazenar o tema atual
+    let currentTheme = 'light';
+
     // Função para alternar entre temas claro e escuro
     function toggleTheme() {
       const isDarkTheme = document.body.classList.toggle('dark-theme');
-      
-      // Salvar a preferência do usuário no localStorage
-      localStorage.setItem('theme', isDarkTheme ? 'dark' : 'light');
-      
+
+      // Salvar a preferência do usuário em variável
+      currentTheme = isDarkTheme ? 'dark' : 'light';
+
       // Atualizar o ícone
       updateThemeIcon(isDarkTheme);
     }
@@ -102,11 +106,13 @@
         themeToggle.setAttribute('title', isDarkTheme ? 'Mudar para tema claro' : 'Mudar para tema escuro');
       }
     }
-  </script>
-  
-  <script type="module">
-    import { coleta_dados } from '../../back-end/login_professor/login.js';
-    window.coleta_dados = coleta_dados;
+
+    // Funções placeholder para compatibilidade
+
+    function esqueciSenha() {
+      console.log('Esqueci minha senha clicado');
+      // Implementar lógica de recuperação de senha
+    }
   </script>
 </body>
 </html>

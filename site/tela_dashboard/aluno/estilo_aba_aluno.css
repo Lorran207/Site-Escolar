@@ -1,8 +1,16 @@
 
+
+/* Reset básico*/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Nunito', 'Segoe UI', sans-serif;
+}
 /* Variáveis de cores e estilos */
 :root {
-    --cor-primaria: #1e88e5;
-    --cor-secundaria: #7cb342;
+    --cor-primaria: #e7b342;
+    --cor-secundaria: #0a5ad1;
     --cor-acento: #ffb300;
     --cor-texto: #333;
     --cor-fundo: #f5f5f5;
@@ -12,20 +20,12 @@
     --espacamento: 20px;
 }
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Nunito', 'Segoe UI', sans-serif;
-}
-
 body {
     background-color: var(--cor-fundo);
     color: var(--cor-texto);
     line-height: 1.6;
 }
 
-/* Barra lateral */
 .sidebar {
     width: 250px;
     height: 100vh;
@@ -43,28 +43,32 @@ body {
 .sidebar-logo {
     display: flex;
     align-items: center;
-    margin-bottom: 40px;
+    gap: 10px; 
 }
 
 .sidebar-logo img {
-    width: 40px;
-    height: 40px;
-    margin-right: 10px;
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+    border: 3px solid #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+    background: #fff;
+    transition: box-shadow 0.3s;
+    margin-right: 0;
 }
-
 .sidebar-logo h2 {
-    font-size: 18px;
-    font-weight: 600;
+    font-size: 20px;
+    font-weight: 700;
+    color: #fff;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.15);
 }
-
 .sidebar-menu {
     list-style: none;
 }
-
 .sidebar-menu li {
     margin-bottom: 10px;
 }
-
 .sidebar-menu a {
     display: flex;
     align-items: center;
@@ -74,16 +78,17 @@ body {
     border-radius: var(--borda-raio);
     transition: background-color 0.3s;
 }
-
 .sidebar-menu a:hover, .sidebar-menu a.active {
     background-color: rgba(255, 255, 255, 0.1);
 }
-
 .sidebar-menu a i {
     margin-right: 10px;
     font-size: 20px;
 }
-
+.sidebar-menu {
+    list-style: none;
+    margin-top: 30px;
+}
 .sidebar-footer {
     position: absolute;
     bottom: 20px;
@@ -96,7 +101,6 @@ body {
     display: flex;
     align-items: center;
 }
-
 .user-avatar {
     width: 35px;
     height: 35px;
@@ -108,12 +112,10 @@ body {
     margin-right: 10px;
     font-weight: bold;
 }
-
 .user-name {
     font-size: 14px;
 }
 
-/* Conteúdo principal */
 .main-content {
     margin-left: 250px;
     padding: var(--espacamento);
@@ -202,7 +204,7 @@ body {
     color: #777;
 }
 
-/* Seções principais */
+
 .main-sections {
     display: grid;
     grid-template-columns: 1fr;
@@ -263,7 +265,6 @@ body {
     border-radius: 3px 3px 0 0;
 }
 
-/* Formulários e tabelas */
 .form-group {
     margin-bottom: 15px;
 }
@@ -468,7 +469,6 @@ td {
 }
 
 /* Responsividade */
-/* Regra geral para evitar rolagem horizontal */
 html, body {
     overflow-x: hidden;
     width: 100%;
@@ -508,10 +508,9 @@ html, body {
     .sidebar-footer {
         left: 10px;
     }
-    
-    /* Ajuste para manter apenas tabelas de atividades com scroll */
 }
 
+/* Ajuste para manter apenas tabelas de atividades com scroll */
 @media (max-width: 768px) {
     .dashboard {
         grid-template-columns: 1fr;
