@@ -60,18 +60,6 @@
                 </a>
             </li>
             <li>
-                <a href="#" id="menu-plano-docente">
-                    <i class="fas fa-file-alt"></i>
-                    <span>Plano Docente</span>
-                </a>
-            </li>
-            <li>
-                <a href="#" id="menu-material-didatico">
-                    <i class="fas fa-box-open"></i>
-                    <span>Material Didático</span>
-                </a>
-            </li>
-            <li>
                 <a href="#">
                     <i class="fas fa-chart-line"></i>
                     <span>Relatórios</span>
@@ -148,18 +136,6 @@
                 <i class="fas fa-clipboard-list"></i>
                 <h3>Faltas e Notas</h3>
                 <p>Gerencie faltas e lançamento de notas</p>
-            </div>
-
-            <div class="dashboard-card" id="card-plano-docente">
-                <i class="fas fa-file-alt"></i>
-                <h3>Plano Docente</h3>
-                <p>Crie e gerencie seus planos</p>
-            </div>
-
-            <div class="dashboard-card" id="card-material-didatico">
-                <i class="fas fa-box-open"></i>
-                <h3>Material Didático</h3>
-                <p>Organize seus materiais</p>
             </div>
         </div>
 
@@ -588,411 +564,6 @@
                     </div>
                 </div>
             </div>
-
-            <!-- Seção de Plano Docente -->
-            <div class="section-card fadeIn" id="plano-docente-content" style="display: none;">
-                <div class="section-header">
-                    <h2>Plano Docente</h2>
-                    <div class="action-buttons">
-                        <button class="btn btn-secondary" onclick="novoPlano()">Novo Plano</button>
-                        <button class="btn btn-outline" onclick="copiarPlano()">Copiar Plano</button>
-                    </div>
-                </div>
-
-                <div class="tab-nav">
-                    <button class="tab-button active" onclick="mostrarAbaPlano('lista')">Lista de Planos</button>
-                    <button class="tab-button" onclick="mostrarAbaPlano('criar')">Criar/Editar</button>
-                </div>
-
-                <!-- Aba Lista de Planos -->
-                <div id="aba-plano-lista" class="aba-content">
-                    <div class="search-select" style="margin-bottom: 20px;">
-                        <select id="filtro-disciplina-plano">
-                            <option>Todas as Disciplinas</option>
-                            <option>Matemática</option>
-                            <option>Português</option>
-                            <option>Física</option>
-                            <option>Química</option>
-                        </select>
-                        <select id="filtro-ano-plano">
-                            <option>Todos os Anos</option>
-                            <option>2025</option>
-                            <option>2024</option>
-                            <option>2023</option>
-                        </select>
-                        <button onclick="filtrarPlanos()"><i class="fas fa-search"></i> Filtrar</button>
-                    </div>
-
-                    <table id="tabela-planos">
-                        <thead>
-                            <tr>
-                                <th>Disciplina</th>
-                                <th>Série/Turma</th>
-                                <th>Ano Letivo</th>
-                                <th>Status</th>
-                                <th>Última Modificação</th>
-                                <th>Ações</th>
-                            </tr>
-                        </thead>
-                        <tbody id="tbody-planos">
-                            <tr>
-                                <td>Matemática</td>
-                                <td>9º Ano A</td>
-                                <td>2025</td>
-                                <td><span class="status-badge status-presente">Ativo</span></td>
-                                <td>15/05/2025</td>
-                                <td>
-                                    <div class="action-buttons">
-                                        <button class="btn btn-sm btn-outline" onclick="visualizarPlano(1)">
-                                            <i class="fas fa-eye"></i> Ver
-                                        </button>
-                                        <button class="btn btn-sm btn-outline" onclick="editarPlano(1)">
-                                            <i class="fas fa-edit"></i> Editar
-                                        </button>
-                                        <button class="btn btn-sm btn-outline" onclick="copiarPlano(1)">
-                                            <i class="fas fa-copy"></i> Copiar
-                                        </button>
-                                        <button class="btn btn-sm btn-warning" onclick="excluirPlano(1)">
-                                            <i class="fas fa-trash"></i> Excluir
-                                        </button>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Física</td>
-                                <td>8º Ano B</td>
-                                <td>2025</td>
-                                <td><span class="status-badge status-justificado">Rascunho</span></td>
-                                <td>10/05/2025</td>
-                                <td>
-                                    <div class="action-buttons">
-                                        <button class="btn btn-sm btn-outline" onclick="visualizarPlano(2)">
-                                            <i class="fas fa-eye"></i> Ver
-                                        </button>
-                                        <button class="btn btn-sm btn-outline" onclick="editarPlano(2)">
-                                            <i class="fas fa-edit"></i> Editar
-                                        </button>
-                                        <button class="btn btn-sm btn-outline" onclick="copiarPlano(2)">
-                                            <i class="fas fa-copy"></i> Copiar
-                                        </button>
-                                        <button class="btn btn-sm btn-warning" onclick="excluirPlano(2)">
-                                            <i class="fas fa-trash"></i> Excluir
-                                        </button>
-                                    </div>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-
-                <!-- Aba Criar/Editar Plano -->
-                <div id="aba-plano-criar" class="aba-content" style="display: none;">
-                    <form id="form-plano-docente">
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="plano-disciplina">Disciplina *</label>
-                                <select id="plano-disciplina" required>
-                                    <option value="">Selecione a disciplina</option>
-                                    <option>Matemática</option>
-                                    <option>Português</option>
-                                    <option>Física</option>
-                                    <option>Química</option>
-                                    <option>História</option>
-                                    <option>Geografia</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label for="plano-turma">Série/Turma *</label>
-                                <select id="plano-turma" required>
-                                    <option value="">Selecione a turma</option>
-                                    <option>9º Ano A</option>
-                                    <option>9º Ano B</option>
-                                    <option>8º Ano A</option>
-                                    <option>8º Ano B</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label for="plano-ano">Ano Letivo *</label>
-                                <input type="number" id="plano-ano" value="2025" min="2020" max="2030" required>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="plano-ementa">Ementa *</label>
-                            <textarea id="plano-ementa" rows="4" placeholder="Descrição geral dos conteúdos da disciplina..." required></textarea>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="plano-objetivos">Objetivos Gerais *</label>
-                            <textarea id="plano-objetivos" rows="4" placeholder="Objetivos que se pretende alcançar com a disciplina..." required></textarea>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="plano-metodologia">Metodologia de Ensino *</label>
-                            <textarea id="plano-metodologia" rows="4" placeholder="Métodos e estratégias de ensino que serão utilizados..." required></textarea>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="plano-recursos">Recursos Didáticos</label>
-                            <textarea id="plano-recursos" rows="3" placeholder="Materiais, equipamentos e recursos que serão utilizados..."></textarea>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="plano-avaliacao">Sistema de Avaliação *</label>
-                            <textarea id="plano-avaliacao" rows="4" placeholder="Critérios e instrumentos de avaliação..." required></textarea>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="plano-cronograma">Cronograma de Conteúdos</label>
-                            <textarea id="plano-cronograma" rows="6" placeholder="Distribuição dos conteúdos por bimestre/período..."></textarea>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="plano-bibliografia">Bibliografia</label>
-                            <textarea id="plano-bibliografia" rows="4" placeholder="Livros e materiais de referência..."></textarea>
-                        </div>
-
-                        <div style="display: flex; justify-content: flex-end; gap: 15px; margin-top: 30px;">
-                            <button type="button" class="btn btn-outline" onclick="cancelarPlano()">Cancelar</button>
-                            <button type="button" class="btn btn-secondary" onclick="salvarRascunhoPlano()">Salvar Rascunho</button>
-                            <button type="button" class="btn btn-primary" onclick="salvarPlano()">Salvar Plano</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-
-            <!-- Seção de Material Didático -->
-            <div class="section-card fadeIn" id="material-didatico-content" style="display: none;">
-                <div class="section-header">
-                    <h2>Material Didático</h2>
-                    <div class="action-buttons">
-                        <button class="btn btn-primary" onclick="incluirMaterial()">
-                            <i class="fas fa-plus"></i> Incluir Material
-                        </button>
-                    </div>
-                </div>
-
-                <div class="tab-nav">
-                    <button class="tab-button active" onclick="mostrarAbaMaterial('lista')">Lista de Materiais</button>
-                    <button class="tab-button" onclick="mostrarAbaMaterial('incluir')">Incluir/Editar</button>
-                </div>
-
-                <!-- Aba Lista de Materiais -->
-                <div id="aba-material-lista" class="aba-content">
-                    <div class="search-select" style="margin-bottom: 20px;">
-                        <input type="text" id="busca-material" placeholder="Buscar material...">
-                        <select id="filtro-tipo-material">
-                            <option>Todos os Tipos</option>
-                            <option>Apostila</option>
-                            <option>Exercícios</option>
-                            <option>Slides</option>
-                            <option>Vídeo</option>
-                            <option>Livro Digital</option>
-                            <option>Atividade</option>
-                        </select>
-                        <select id="filtro-disciplina-material">
-                            <option>Todas as Disciplinas</option>
-                            <option>Matemática</option>
-                            <option>Português</option>
-                            <option>Física</option>
-                            <option>Química</option>
-                        </select>
-                        <select id="filtro-status-material">
-                            <option>Todos os Status</option>
-                            <option>Ativo</option>
-                            <option>Inativo</option>
-                        </select>
-                        <button onclick="filtrarMateriais()"><i class="fas fa-search"></i> Filtrar</button>
-                    </div>
-
-                    <table id="tabela-materiais">
-                        <thead>
-                            <tr>
-                                <th>Nome do Material</th>
-                                <th>Tipo</th>
-                                <th>Disciplina</th>
-                                <th>Série/Turma</th>
-                                <th>Status</th>
-                                <th>Data Criação</th>
-                                <th>Ações</th>
-                            </tr>
-                        </thead>
-                        <tbody id="tbody-materiais">
-                            <tr>
-                                                               <td>Apostila de Equações do 2º Grau</td>
-                                <td>Apostila</td>
-                                <td>Matemática</td>
-                                <td>9º Ano</td>
-                                <td><span class="status-badge status-presente">Ativo</span></td>
-                                <td>20/05/2025</td>
-                                <td>
-                                    <div class="action-buttons">
-                                        <button class="btn btn-sm btn-outline" onclick="visualizarMaterial(1)">
-                                            <i class="fas fa-eye"></i> Ver
-                                        </button>
-                                        <button class="btn btn-sm btn-outline" onclick="editarMaterial(1)">
-                                            <i class="fas fa-edit"></i> Editar
-                                        </button>
-                                        <button class="btn btn-sm btn-outline" onclick="downloadMaterial(1)">
-                                            <i class="fas fa-download"></i> Download
-                                        </button>
-                                        <button class="btn btn-sm btn-warning" onclick="inativarMaterial(1)">
-                                            <i class="fas fa-eye-slash"></i> Inativar
-                                        </button>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Lista de Exercícios - Física</td>
-                                <td>Exercícios</td>
-                                <td>Física</td>
-                                <td>8º Ano</td>
-                                <td><span class="status-badge status-presente">Ativo</span></td>
-                                <td>18/05/2025</td>
-                                <td>
-                                    <div class="action-buttons">
-                                        <button class="btn btn-sm btn-outline" onclick="visualizarMaterial(2)">
-                                            <i class="fas fa-eye"></i> Ver
-                                        </button>
-                                        <button class="btn btn-sm btn-outline" onclick="editarMaterial(2)">
-                                            <i class="fas fa-edit"></i> Editar
-                                        </button>
-                                        <button class="btn btn-sm btn-outline" onclick="downloadMaterial(2)">
-                                            <i class="fas fa-download"></i> Download
-                                        </button>
-                                        <button class="btn btn-sm btn-warning" onclick="inativarMaterial(2)">
-                                            <i class="fas fa-eye-slash"></i> Inativar
-                                        </button>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Slides - Teorema de Pitágoras</td>
-                                <td>Slides</td>
-                                <td>Matemática</td>
-                                <td>8º Ano</td>
-                                <td><span class="status-badge status-ausente">Inativo</span></td>
-                                <td>15/05/2025</td>
-                                <td>
-                                    <div class="action-buttons">
-                                        <button class="btn btn-sm btn-outline" onclick="visualizarMaterial(3)">
-                                            <i class="fas fa-eye"></i> Ver
-                                        </button>
-                                        <button class="btn btn-sm btn-outline" onclick="editarMaterial(3)">
-                                            <i class="fas fa-edit"></i> Editar
-                                        </button>
-                                        <button class="btn btn-sm btn-outline" onclick="downloadMaterial(3)">
-                                            <i class="fas fa-download"></i> Download
-                                        </button>
-                                        <button class="btn btn-sm btn-primary" onclick="ativarMaterial(3)">
-                                            <i class="fas fa-eye"></i> Ativar
-                                        </button>
-                                    </div>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-
-                <!-- Aba Incluir/Editar Material -->
-                <div id="aba-material-incluir" class="aba-content" style="display: none;">
-                    <form id="form-material-didatico">
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="material-nome">Nome do Material *</label>
-                                <input type="text" id="material-nome" placeholder="Ex: Apostila de Geometria" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="material-tipo">Tipo de Material *</label>
-                                <select id="material-tipo" required>
-                                    <option value="">Selecione o tipo</option>
-                                    <option>Apostila</option>
-                                    <option>Exercícios</option>
-                                    <option>Slides</option>
-                                    <option>Vídeo</option>
-                                    <option>Livro Digital</option>
-                                    <option>Atividade</option>
-                                    <option>Prova</option>
-                                    <option>Simulado</option>
-                                </select>
-                            </div>
-                        </div>
-
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="material-disciplina">Disciplina *</label>
-                                <select id="material-disciplina" required>
-                                    <option value="">Selecione a disciplina</option>
-                                    <option>Matemática</option>
-                                    <option>Português</option>
-                                    <option>Física</option>
-                                    <option>Química</option>
-                                    <option>História</option>
-                                    <option>Geografia</option>
-                                    <option>Inglês</option>
-                                    <option>Biologia</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label for="material-serie">Série/Turma *</label>
-                                <select id="material-serie" required>
-                                    <option value="">Selecione a série</option>
-                                    <option>6º Ano</option>
-                                    <option>7º Ano</option>
-                                    <option>8º Ano</option>
-                                    <option>9º Ano</option>
-                                    <option>1º Ano EM</option>
-                                    <option>2º Ano EM</option>
-                                    <option>3º Ano EM</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label for="material-status">Status *</label>
-                                <select id="material-status" required>
-                                    <option value="ativo">Ativo</option>
-                                    <option value="inativo">Inativo</option>
-                                </select>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="material-descricao">Descrição</label>
-                            <textarea id="material-descricao" rows="3" placeholder="Descrição do conteúdo do material..."></textarea>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="material-conteudo">Conteúdos Abordados</label>
-                            <textarea id="material-conteudo" rows="4" placeholder="Liste os principais conteúdos abordados no material..."></textarea>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="material-objetivos">Objetivos de Aprendizagem</label>
-                            <textarea id="material-objetivos" rows="3" placeholder="Objetivos que o material pretende alcançar..."></textarea>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="material-arquivo">Arquivo do Material</label>
-                            <input type="file" id="material-arquivo" accept=".pdf,.ppt,.pptx,.doc,.docx,.txt,.mp4,.avi,.mov">
-                            <small>Formatos aceitos: PDF, PPT, DOC, TXT, MP4, AVI, MOV (máx. 50MB)</small>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="material-link">Link Externo (Opcional)</label>
-                            <input type="url" id="material-link" placeholder="https://exemplo.com/material">
-                        </div>
-
-                        <div class="form-group">
-                            <label for="material-observacoes">Observações</label>
-                            <textarea id="material-observacoes" rows="3" placeholder="Observações adicionais sobre o material..."></textarea>
-                        </div>
-
-                        <div style="display: flex; justify-content: flex-end; gap: 15px; margin-top: 30px;">
-                            <button type="button" class="btn btn-outline" onclick="cancelarMaterial()">Cancelar</button>
-                            <button type="button" class="btn btn-primary" onclick="salvarMaterial()">Salvar Material</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
         </div>
     </div>
 
@@ -1004,8 +575,6 @@
         const menuPlantao = document.getElementById('menu-plantao');
         const menuQuestoes = document.getElementById('menu-questoes');
         const menuFaltasNotas = document.getElementById('menu-faltas-notas');
-        const menuPlanoDocente = document.getElementById('menu-plano-docente');
-        const menuMaterialDidatico = document.getElementById('menu-material-didatico');
 
         // Captura todos os cards da dashboard
         const cardFrequencia = document.getElementById('card-frequencia');
@@ -1014,8 +583,6 @@
         const cardPlantao = document.getElementById('card-plantao');
         const cardQuestoes = document.getElementById('card-questoes');
         const cardFaltasNotas = document.getElementById('card-faltas-notas');
-        const cardPlanoDocente = document.getElementById('card-plano-docente');
-        const cardMaterialDidatico = document.getElementById('card-material-didatico');
 
         // Captura todas as seções de conteúdo
         const frequenciaContent = document.getElementById('frequencia-content');
@@ -1024,8 +591,6 @@
         const plantaoContent = document.getElementById('plantao-content');
         const questoesContent = document.getElementById('questoes-content');
         const faltasNotasContent = document.getElementById('faltas-notas-content');
-        const planoDocenteContent = document.getElementById('plano-docente-content');
-        const materialDidaticoContent = document.getElementById('material-didatico-content');
 
         // Função para esconder todas as seções
         function esconderTodasSecoes() {
@@ -1035,8 +600,6 @@
             if (plantaoContent) plantaoContent.style.display = 'none';
             if (questoesContent) questoesContent.style.display = 'none';
             if (faltasNotasContent) faltasNotasContent.style.display = 'none';
-            if (planoDocenteContent) planoDocenteContent.style.display = 'none';
-            if (materialDidaticoContent) materialDidaticoContent.style.display = 'none';
         }
 
         // Função para mostrar a seção de frequência
@@ -1075,18 +638,6 @@
             faltasNotasContent.style.display = 'block';
         }
 
-        // Função para mostrar a seção de plano docente
-        function mostrarPlanoDocente() {
-            esconderTodasSecoes();
-            planoDocenteContent.style.display = 'block';
-        }
-
-        // Função para mostrar a seção de material didático
-        function mostrarMaterialDidatico() {
-            esconderTodasSecoes();
-            materialDidaticoContent.style.display = 'block';
-        }
-
         // Adiciona os event listeners aos elementos do menu
         if (menuFrequencia) menuFrequencia.addEventListener('click', mostrarFrequencia);
         if (menuAulas) menuAulas.addEventListener('click', mostrarAulas);
@@ -1094,8 +645,6 @@
         if (menuPlantao) menuPlantao.addEventListener('click', mostrarPlantao);
         if (menuQuestoes) menuQuestoes.addEventListener('click', mostrarQuestoes);
         if (menuFaltasNotas) menuFaltasNotas.addEventListener('click', mostrarFaltasNotas);
-        if (menuPlanoDocente) menuPlanoDocente.addEventListener('click', mostrarPlanoDocente);
-        if (menuMaterialDidatico) menuMaterialDidatico.addEventListener('click', mostrarMaterialDidatico);
 
         // Adiciona os event listeners aos cards da dashboard
         if (cardFrequencia) cardFrequencia.addEventListener('click', mostrarFrequencia);
@@ -1104,8 +653,6 @@
         if (cardPlantao) cardPlantao.addEventListener('click', mostrarPlantao);
         if (cardQuestoes) cardQuestoes.addEventListener('click', mostrarQuestoes);
         if (cardFaltasNotas) cardFaltasNotas.addEventListener('click', mostrarFaltasNotas);
-        if (cardPlanoDocente) cardPlanoDocente.addEventListener('click', mostrarPlanoDocente);
-        if (cardMaterialDidatico) cardMaterialDidatico.addEventListener('click', mostrarMaterialDidatico);
     // Dados simulados para demonstração
         const alunosSimulados = [
             { id: 1, numero: '01', nome: 'Ana Carolina Silva' },
@@ -1122,43 +669,13 @@
         function mostrarAba(aba) {
             // Remove classe active de todos os botões
             document.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
-
+            
             // Esconde todas as abas
             document.querySelectorAll('.aba-content').forEach(content => content.style.display = 'none');
-
+            
             // Mostra a aba selecionada
             document.getElementById(`aba-${aba}`).style.display = 'block';
-
-            // Adiciona classe active ao botão clicado
-            event.target.classList.add('active');
-        }
-
-         // Função para alternar entre as abas do plano docente
-         function mostrarAbaPlano(aba) {
-            // Remove classe active de todos os botões
-            document.querySelectorAll('#plano-docente-content .tab-button').forEach(btn => btn.classList.remove('active'));
-
-            // Esconde todas as abas
-            document.querySelectorAll('#plano-docente-content .aba-content').forEach(content => content.style.display = 'none');
-
-            // Mostra a aba selecionada
-            document.getElementById(`aba-plano-${aba}`).style.display = 'block';
-
-            // Adiciona classe active ao botão clicado
-            event.target.classList.add('active');
-        }
-
-        // Função para alternar entre as abas do material didático
-        function mostrarAbaMaterial(aba) {
-            // Remove classe active de todos os botões
-            document.querySelectorAll('#material-didatico-content .tab-button').forEach(btn => btn.classList.remove('active'));
-
-            // Esconde todas as abas
-            document.querySelectorAll('#material-didatico-content .aba-content').forEach(content => content.style.display = 'none');
-
-            // Mostra a aba selecionada
-            document.getElementById(`aba-material-${aba}`).style.display = 'block';
-
+            
             // Adiciona classe active ao botão clicado
             event.target.classList.add('active');
         }
@@ -1168,15 +685,15 @@
             const turma = document.getElementById('turma-notas').value;
             const bimestre = document.getElementById('bimestre-notas').value;
             const tipoAvaliacao = document.getElementById('tipo-avaliacao').value;
-
+            
             if (!turma || turma === 'Selecione a Turma' || !bimestre || bimestre === 'Selecione o Bimestre') {
                 alert('Por favor, selecione a turma e o bimestre.');
                 return;
             }
-
+            
             const tbody = document.getElementById('tbody-notas');
             tbody.innerHTML = '';
-
+            
             alunosSimulados.forEach(aluno => {
                 const row = document.createElement('tr');
                 row.innerHTML = `
@@ -1207,7 +724,7 @@
                 `;
                 tbody.appendChild(row);
             });
-
+            
             document.getElementById('tabela-notas-container').style.display = 'block';
         }
 
@@ -1215,15 +732,15 @@
         function carregarAlunosFaltas() {
             const turma = document.getElementById('turma-faltas').value;
             const data = document.getElementById('data-falta').value;
-
+            
             if (!turma || turma === 'Selecione a Turma' || !data) {
                 alert('Por favor, selecione a turma e a data.');
                 return;
             }
-
+            
             const tbody = document.getElementById('tbody-faltas');
             tbody.innerHTML = '';
-
+            
             alunosSimulados.forEach(aluno => {
                 const row = document.createElement('tr');
                 row.innerHTML = `
@@ -1251,7 +768,7 @@
                 `;
                 tbody.appendChild(row);
             });
-
+            
             document.getElementById('tabela-faltas-container').style.display = 'block';
         }
 
@@ -1259,12 +776,12 @@
         function carregarHistorico() {
             const turma = document.getElementById('turma-historico').value;
             const periodo = document.getElementById('periodo-historico').value;
-
+            
             if (!turma || turma === 'Selecione a Turma') {
                 alert('Por favor, selecione a turma.');
                 return;
             }
-
+            
             // Dados simulados para o histórico
             const historicoSimulado = [
                 { nome: 'Ana Carolina Silva', bim1: 8.5, bim2: 9.0, bim3: 8.8, bim4: 9.2, faltas: 2 },
@@ -1276,23 +793,23 @@
                 { nome: 'Gabriela Costa Lima', bim1: 9.5, bim2: 9.2, bim3: 9.8, bim4: 9.6, faltas: 1 },
                 { nome: 'Henrique Oliveira Silva', bim1: 7.8, bim2: 8.1, bim3: 7.9, bim4: 8.3, faltas: 2 }
             ];
-
+            
             const tbody = document.getElementById('tbody-historico');
             tbody.innerHTML = '';
-
+            
             let totalAlunos = historicoSimulado.length;
             let somaMedias = 0;
             let aprovados = 0;
             let reprovados = 0;
-
+            
             historicoSimulado.forEach(aluno => {
                 const mediaFinal = ((aluno.bim1 + aluno.bim2 + aluno.bim3 + aluno.bim4) / 4).toFixed(1);
                 const situacao = mediaFinal >= 7.0 && aluno.faltas <= 15 ? 'Aprovado' : 'Reprovado';
-
+                
                 somaMedias += parseFloat(mediaFinal);
                 if (situacao === 'Aprovado') aprovados++;
                 else reprovados++;
-
+                
                 const row = document.createElement('tr');
                 row.innerHTML = `
                     <td>${aluno.nome}</td>
@@ -1310,196 +827,15 @@
                 `;
                 tbody.appendChild(row);
             });
-
+            
             // Atualizar resumo
             const mediaTurma = (somaMedias / totalAlunos).toFixed(1);
             document.getElementById('total-alunos').textContent = totalAlunos;
             document.getElementById('media-turma').textContent = mediaTurma;
             document.getElementById('total-aprovados').textContent = aprovados;
             document.getElementById('total-reprovados').textContent = reprovados;
-
+            
             document.getElementById('historico-container').style.display = 'block';
-        }
-
-         // Função para filtrar os planos docentes
-         function filtrarPlanos() {
-            const disciplina = document.getElementById('filtro-disciplina-plano').value;
-            const ano = document.getElementById('filtro-ano-plano').value;
-
-            // Lógica de filtragem aqui (simulada)
-            alert(`Filtrando planos por disciplina: ${disciplina} e ano: ${ano}`);
-        }
-
-        // Função para visualizar um plano docente
-        function visualizarPlano(id) {
-            alert(`Visualizando plano docente com ID: ${id}`);
-        }
-
-        // Função para editar um plano docente
-        function editarPlano(id) {
-            alert(`Editando plano docente com ID: ${id}`);
-        }
-
-        // Função para copiar um plano docente
-        function copiarPlano(id) {
-            alert(`Copiando plano docente com ID: ${id}`);
-        }
-
-        // Função para excluir um plano docente
-        function excluirPlano(id) {
-            if (confirm(`Tem certeza que deseja excluir o plano docente com ID: ${id}?`)) {
-                alert(`Plano docente com ID: ${id} excluído.`);
-            }
-        }
-
-        // Função para criar um novo plano docente
-        function novoPlano() {
-            mostrarAbaPlano('criar');
-            limparFormularioPlano(); // Limpar o formulário ao criar um novo plano
-        }
-
-        // Função para cancelar a criação/edição de um plano
-        function cancelarPlano() {
-            mostrarAbaPlano('lista');
-        }
-
-        // Função para salvar o plano docente (pode ser tanto salvar rascunho quanto salvar plano final)
-        function salvarPlano() {
-             if (confirm('Tem certeza que deseja salvar o plano docente?')) {
-                // Coletar dados do formulário
-                const disciplina = document.getElementById('plano-disciplina').value;
-                const turma = document.getElementById('plano-turma').value;
-                const ano = document.getElementById('plano-ano').value;
-                const ementa = document.getElementById('plano-ementa').value;
-                const objetivos = document.getElementById('plano-objetivos').value;
-                const metodologia = document.getElementById('plano-metodologia').value;
-                const recursos = document.getElementById('plano-recursos').value;
-                const avaliacao = document.getElementById('plano-avaliacao').value;
-                const cronograma = document.getElementById('plano-cronograma').value;
-                const bibliografia = document.getElementById('plano-bibliografia').value;
-
-                // Validar se os campos obrigatórios foram preenchidos
-                if (!disciplina || !turma || !ano || !ementa || !objetivos || !metodologia || !avaliacao) {
-                    alert('Por favor, preencha todos os campos obrigatórios.');
-                    return;
-                }
-
-                // Simular salvamento (aqui você faria a chamada à API)
-                alert('Plano docente salvo com sucesso!');
-                mostrarAbaPlano('lista'); // Retornar à lista após salvar
-                limparFormularioPlano(); // Limpar o formulário após salvar
-            }
-        }
-
-        function salvarRascunhoPlano() {
-            if (confirm('Tem certeza que deseja salvar o plano docente como rascunho?')) {
-                // Coletar dados do formulário
-                const disciplina = document.getElementById('plano-disciplina').value;
-                const turma = document.getElementById('plano-turma').value;
-                const ano = document.getElementById('plano-ano').value;
-                const ementa = document.getElementById('plano-ementa').value;
-                const objetivos = document.getElementById('plano-objetivos').value;
-                const metodologia = document.getElementById('plano-metodologia').value;
-                const recursos = document.getElementById('plano-recursos').value;
-                const avaliacao = document.getElementById('plano-avaliacao').value;
-                const cronograma = document.getElementById('plano-cronograma').value;
-                const bibliografia = document.getElementById('plano-bibliografia').value;
-
-                // Simular salvamento como rascunho (aqui você faria a chamada à API)
-                alert('Plano docente salvo como rascunho!');
-                mostrarAbaPlano('lista'); // Retornar à lista após salvar
-                limparFormularioPlano(); // Limpar o formulário após salvar
-            }
-        }
-
-        // Função para limpar o formulário do plano docente
-        function limparFormularioPlano() {
-            document.getElementById('form-plano-docente').reset();
-        }
-
-         // Função para filtrar materiais didáticos
-         function filtrarMateriais() {
-            const busca = document.getElementById('busca-material').value;
-            const tipo = document.getElementById('filtro-tipo-material').value;
-            const disciplina = document.getElementById('filtro-disciplina-material').value;
-            const status = document.getElementById('filtro-status-material').value;
-
-            // Simular filtragem (aqui você faria a chamada à API)
-            alert(`Filtrando materiais por: busca=${busca}, tipo=${tipo}, disciplina=${disciplina}, status=${status}`);
-        }
-
-        // Função para incluir um novo material didático
-        function incluirMaterial() {
-            mostrarAbaMaterial('incluir');
-            limparFormularioMaterial(); // Limpar o formulário ao incluir novo material
-        }
-
-        // Função para cancelar a inclusão/edição de um material
-        function cancelarMaterial() {
-            mostrarAbaMaterial('lista');
-        }
-
-         // Função para salvar o material didático
-         function salvarMaterial() {
-            if (confirm('Tem certeza que deseja salvar o material didático?')) {
-                // Coletar dados do formulário
-                const nome = document.getElementById('material-nome').value;
-                const tipo = document.getElementById('material-tipo').value;
-                const disciplina = document.getElementById('material-disciplina').value;
-                const serie = document.getElementById('material-serie').value;
-                const status = document.getElementById('material-status').value;
-                const descricao = document.getElementById('material-descricao').value;
-                const conteudo = document.getElementById('material-conteudo').value;
-                const objetivos = document.getElementById('material-objetivos').value;
-                const arquivo = document.getElementById('material-arquivo').value; //TODO: Tratar arquivo
-                const link = document.getElementById('material-link').value;
-                const observacoes = document.getElementById('material-observacoes').value;
-
-                // Validar se os campos obrigatórios foram preenchidos
-                if (!nome || !tipo || !disciplina || !serie || !status) {
-                    alert('Por favor, preencha todos os campos obrigatórios.');
-                    return;
-                }
-
-                // Simular salvamento (aqui você faria a chamada à API)
-                alert('Material didático salvo com sucesso!');
-                mostrarAbaMaterial('lista'); // Retornar à lista após salvar
-                limparFormularioMaterial(); // Limpar o formulário após salvar
-            }
-        }
-
-        // Função para limpar o formulário do material didático
-        function limparFormularioMaterial() {
-            document.getElementById('form-material-didatico').reset();
-        }
-
-        // Função para visualizar um material didático
-        function visualizarMaterial(id) {
-            alert(`Visualizando material didático com ID: ${id}`);
-        }
-
-        // Função para editar um material didático
-        function editarMaterial(id) {
-            alert(`Editando material didático com ID: ${id}`);
-        }
-
-        // Função para fazer o download de um material didático
-        function downloadMaterial(id) {
-            alert(`Download do material didático com ID: ${id}`);
-        }
-
-        // Função para inativar um material didático
-        function inativarMaterial(id) {
-            if (confirm(`Tem certeza que deseja inativar o material didático com ID: ${id}?`)) {
-                alert(`Material didático com ID: ${id} inativado.`);
-            }
-        }
-
-        // Função para ativar um material didático
-        function ativarMaterial(id) {
-            if (confirm(`Tem certeza que deseja ativar o material didático com ID: ${id}?`)) {
-                alert(`Material didático com ID: ${id} ativado.`);
-            }
         }
 
         // Funções para salvar dados
@@ -1514,12 +850,12 @@
                     });
                 }
             });
-
+            
             if (notas.length === 0) {
                 alert('Nenhuma nota foi inserida.');
                 return;
             }
-
+            
             // Simular salvamento
             alert(`${notas.length} nota(s) salva(s) com sucesso!`);
             console.log('Notas salvas:', notas);
@@ -1535,7 +871,7 @@
                     justificativa: justificativa
                 });
             });
-
+            
             // Simular salvamento
             alert(`Faltas registradas para ${faltas.length} aluno(s)!`);
             console.log('Faltas salvas:', faltas);
