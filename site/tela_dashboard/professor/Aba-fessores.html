@@ -54,6 +54,12 @@
                 </a>
             </li>
             <li>
+                <a href="#" id="menu-faltas-notas">
+                    <i class="fas fa-clipboard-list"></i>
+                    <span>Faltas e Notas</span>
+                </a>
+            </li>
+            <li>
                 <a href="#">
                     <i class="fas fa-chart-line"></i>
                     <span>Relatórios</span>
@@ -124,6 +130,12 @@
                 <i class="fas fa-tasks"></i>
                 <h3>Banco de Questões</h3>
                 <p>Crie e organize questões</p>
+            </div>
+
+            <div class="dashboard-card" id="card-faltas-notas">
+                <i class="fas fa-clipboard-list"></i>
+                <h3>Faltas e Notas</h3>
+                <p>Gerencie faltas e lançamento de notas</p>
             </div>
         </div>
 
@@ -398,6 +410,160 @@
                     </div>
                 </div>
             </div>
+
+            <!-- Seção de Faltas e Notas -->
+            <div class="section-card fadeIn" id="faltas-notas-content" style="display: none;">
+                <div class="section-header">
+                    <h2>Faltas e Notas</h2>
+                    <div class="action-buttons">
+                        <button class="btn btn-secondary" onclick="finalizarPeriodo()">Finalizar Período</button>
+                        <button class="btn btn-primary" onclick="exportarRelatorio()">Exportar Relatório</button>
+                    </div>
+                </div>
+
+                <div class="tab-nav">
+                    <button class="tab-button active" onclick="mostrarAba('notas')">Lançamento de Notas</button>
+                    <button class="tab-button" onclick="mostrarAba('faltas')">Registro de Faltas</button>
+                    <button class="tab-button" onclick="mostrarAba('historico')">Histórico</button>
+                </div>
+
+                <!-- Aba de Lançamento de Notas -->
+                <div id="aba-notas" class="aba-content">
+                    <div class="search-select" style="margin-bottom: 20px;">
+                        <select id="turma-notas">
+                            <option>Selecione a Turma</option>
+                            <option>9º Ano A</option>
+                            <option>9º Ano B</option>
+                            <option>8º Ano A</option>
+                            <option>8º Ano B</option>
+                        </select>
+                        <select id="bimestre-notas">
+                            <option>Selecione o Bimestre</option>
+                            <option>1º Bimestre</option>
+                            <option>2º Bimestre</option>
+                            <option>3º Bimestre</option>
+                            <option>4º Bimestre</option>
+                        </select>
+                        <select id="tipo-avaliacao">
+                            <option>Tipo de Avaliação</option>
+                            <option>Prova</option>
+                            <option>Trabalho</option>
+                            <option>Participação</option>
+                            <option>Projeto</option>
+                        </select>
+                        <button onclick="carregarAlunosNotas()"><i class="fas fa-search"></i> Buscar</button>
+                    </div>
+
+                    <div id="tabela-notas-container" style="display: none;">
+                        <table id="tabela-notas">
+                            <thead>
+                                <tr>
+                                    <th>Nº</th>
+                                    <th>Nome do Aluno</th>
+                                    <th>Nota</th>
+                                    <th>Observações</th>
+                                    <th>Ações</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tbody-notas">
+                                <!-- Dados dos alunos serão inseridos aqui -->
+                            </tbody>
+                        </table>
+                        <div style="margin-top: 20px; text-align: right;">
+                            <button class="btn btn-outline" onclick="limparNotas()">Limpar Tudo</button>
+                            <button class="btn btn-primary" onclick="salvarNotas()">Salvar Notas</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Aba de Registro de Faltas -->
+                <div id="aba-faltas" class="aba-content" style="display: none;">
+                    <div class="search-select" style="margin-bottom: 20px;">
+                        <select id="turma-faltas">
+                            <option>Selecione a Turma</option>
+                            <option>9º Ano A</option>
+                            <option>9º Ano B</option>
+                            <option>8º Ano A</option>
+                            <option>8º Ano B</option>
+                        </select>
+                        <input type="date" id="data-falta" style="flex: 1;">
+                        <button onclick="carregarAlunosFaltas()"><i class="fas fa-search"></i> Buscar</button>
+                    </div>
+
+                    <div id="tabela-faltas-container" style="display: none;">
+                        <table id="tabela-faltas">
+                            <thead>
+                                <tr>
+                                    <th>Nº</th>
+                                    <th>Nome do Aluno</th>
+                                    <th>Status</th>
+                                    <th>Justificativa</th>
+                                    <th>Ações</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tbody-faltas">
+                                <!-- Dados dos alunos serão inseridos aqui -->
+                            </tbody>
+                        </table>
+                        <div style="margin-top: 20px; text-align: right;">
+                            <button class="btn btn-outline" onclick="limparFaltas()">Limpar Tudo</button>
+                            <button class="btn btn-primary" onclick="salvarFaltas()">Salvar Faltas</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Aba de Histórico -->
+                <div id="aba-historico" class="aba-content" style="display: none;">
+                    <div class="search-select" style="margin-bottom: 20px;">
+                        <select id="turma-historico">
+                            <option>Selecione a Turma</option>
+                            <option>9º Ano A</option>
+                            <option>9º Ano B</option>
+                            <option>8º Ano A</option>
+                            <option>8º Ano B</option>
+                        </select>
+                        <select id="periodo-historico">
+                            <option>Selecione o Período</option>
+                            <option>1º Bimestre</option>
+                            <option>2º Bimestre</option>
+                            <option>3º Bimestre</option>
+                            <option>4º Bimestre</option>
+                            <option>Ano Letivo Completo</option>
+                        </select>
+                        <button onclick="carregarHistorico()"><i class="fas fa-search"></i> Buscar</button>
+                    </div>
+
+                    <div id="historico-container" style="display: none;">
+                        <div class="historico-resumo">
+                            <div class="resumo-card">
+                                <h4>Resumo Geral</h4>
+                                <p><strong>Total de Alunos:</strong> <span id="total-alunos">0</span></p>
+                                <p><strong>Média da Turma:</strong> <span id="media-turma">0.0</span></p>
+                                <p><strong>Aprovados:</strong> <span id="total-aprovados">0</span></p>
+                                <p><strong>Reprovados:</strong> <span id="total-reprovados">0</span></p>
+                            </div>
+                        </div>
+
+                        <table id="tabela-historico">
+                            <thead>
+                                <tr>
+                                    <th>Nome do Aluno</th>
+                                    <th>1º Bim</th>
+                                    <th>2º Bim</th>
+                                    <th>3º Bim</th>
+                                    <th>4º Bim</th>
+                                    <th>Média Final</th>
+                                    <th>Faltas</th>
+                                    <th>Situação</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tbody-historico">
+                                <!-- Dados do histórico serão inseridos aqui -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -408,6 +574,7 @@
         const menuBiblioteca = document.getElementById('menu-biblioteca');
         const menuPlantao = document.getElementById('menu-plantao');
         const menuQuestoes = document.getElementById('menu-questoes');
+        const menuFaltasNotas = document.getElementById('menu-faltas-notas');
 
         // Captura todos os cards da dashboard
         const cardFrequencia = document.getElementById('card-frequencia');
@@ -415,6 +582,7 @@
         const cardBiblioteca = document.getElementById('card-biblioteca');
         const cardPlantao = document.getElementById('card-plantao');
         const cardQuestoes = document.getElementById('card-questoes');
+        const cardFaltasNotas = document.getElementById('card-faltas-notas');
 
         // Captura todas as seções de conteúdo
         const frequenciaContent = document.getElementById('frequencia-content');
@@ -422,6 +590,7 @@
         const bibliotecaContent = document.getElementById('biblioteca-content');
         const plantaoContent = document.getElementById('plantao-content');
         const questoesContent = document.getElementById('questoes-content');
+        const faltasNotasContent = document.getElementById('faltas-notas-content');
 
         // Função para esconder todas as seções
         function esconderTodasSecoes() {
@@ -430,6 +599,7 @@
             if (bibliotecaContent) bibliotecaContent.style.display = 'none';
             if (plantaoContent) plantaoContent.style.display = 'none';
             if (questoesContent) questoesContent.style.display = 'none';
+            if (faltasNotasContent) faltasNotasContent.style.display = 'none';
         }
 
         // Função para mostrar a seção de frequência
@@ -462,12 +632,19 @@
             questoesContent.style.display = 'block';
         }
 
+        // Função para mostrar a seção de faltas e notas
+        function mostrarFaltasNotas() {
+            esconderTodasSecoes();
+            faltasNotasContent.style.display = 'block';
+        }
+
         // Adiciona os event listeners aos elementos do menu
         if (menuFrequencia) menuFrequencia.addEventListener('click', mostrarFrequencia);
         if (menuAulas) menuAulas.addEventListener('click', mostrarAulas);
         if (menuBiblioteca) menuBiblioteca.addEventListener('click', mostrarBiblioteca);
         if (menuPlantao) menuPlantao.addEventListener('click', mostrarPlantao);
         if (menuQuestoes) menuQuestoes.addEventListener('click', mostrarQuestoes);
+        if (menuFaltasNotas) menuFaltasNotas.addEventListener('click', mostrarFaltasNotas);
 
         // Adiciona os event listeners aos cards da dashboard
         if (cardFrequencia) cardFrequencia.addEventListener('click', mostrarFrequencia);
@@ -475,6 +652,267 @@
         if (cardBiblioteca) cardBiblioteca.addEventListener('click', mostrarBiblioteca);
         if (cardPlantao) cardPlantao.addEventListener('click', mostrarPlantao);
         if (cardQuestoes) cardQuestoes.addEventListener('click', mostrarQuestoes);
+        if (cardFaltasNotas) cardFaltasNotas.addEventListener('click', mostrarFaltasNotas);
+    // Dados simulados para demonstração
+        const alunosSimulados = [
+            { id: 1, numero: '01', nome: 'Ana Carolina Silva' },
+            { id: 2, numero: '02', nome: 'Bruno Almeida Santos' },
+            { id: 3, numero: '03', nome: 'Carla Mendes Oliveira' },
+            { id: 4, numero: '04', nome: 'Daniel Ferreira Lima' },
+            { id: 5, numero: '05', nome: 'Eduarda Gomes Costa' },
+            { id: 6, numero: '06', nome: 'Felipe Santos Rocha' },
+            { id: 7, numero: '07', nome: 'Gabriela Costa Lima' },
+            { id: 8, numero: '08', nome: 'Henrique Oliveira Silva' }
+        ];
+
+        // Função para alternar entre as abas
+        function mostrarAba(aba) {
+            // Remove classe active de todos os botões
+            document.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
+            
+            // Esconde todas as abas
+            document.querySelectorAll('.aba-content').forEach(content => content.style.display = 'none');
+            
+            // Mostra a aba selecionada
+            document.getElementById(`aba-${aba}`).style.display = 'block';
+            
+            // Adiciona classe active ao botão clicado
+            event.target.classList.add('active');
+        }
+
+        // Função para carregar alunos para lançamento de notas
+        function carregarAlunosNotas() {
+            const turma = document.getElementById('turma-notas').value;
+            const bimestre = document.getElementById('bimestre-notas').value;
+            const tipoAvaliacao = document.getElementById('tipo-avaliacao').value;
+            
+            if (!turma || turma === 'Selecione a Turma' || !bimestre || bimestre === 'Selecione o Bimestre') {
+                alert('Por favor, selecione a turma e o bimestre.');
+                return;
+            }
+            
+            const tbody = document.getElementById('tbody-notas');
+            tbody.innerHTML = '';
+            
+            alunosSimulados.forEach(aluno => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${aluno.numero}</td>
+                    <td>${aluno.nome}</td>
+                    <td>
+                        <input type="number" 
+                               class="nota-input" 
+                               data-aluno-id="${aluno.id}" 
+                               min="0" 
+                               max="10" 
+                               step="0.1" 
+                               placeholder="0.0"
+                               style="width: 80px; padding: 5px; border: 1px solid #ddd; border-radius: 4px;">
+                    </td>
+                    <td>
+                        <input type="text" 
+                               class="obs-input" 
+                               data-aluno-id="${aluno.id}" 
+                               placeholder="Observações..."
+                               style="width: 200px; padding: 5px; border: 1px solid #ddd; border-radius: 4px;">
+                    </td>
+                    <td>
+                        <button class="btn btn-sm btn-outline" onclick="limparNotaAluno(${aluno.id})">
+                            <i class="fas fa-eraser"></i> Limpar
+                        </button>
+                    </td>
+                `;
+                tbody.appendChild(row);
+            });
+            
+            document.getElementById('tabela-notas-container').style.display = 'block';
+        }
+
+        // Função para carregar alunos para registro de faltas
+        function carregarAlunosFaltas() {
+            const turma = document.getElementById('turma-faltas').value;
+            const data = document.getElementById('data-falta').value;
+            
+            if (!turma || turma === 'Selecione a Turma' || !data) {
+                alert('Por favor, selecione a turma e a data.');
+                return;
+            }
+            
+            const tbody = document.getElementById('tbody-faltas');
+            tbody.innerHTML = '';
+            
+            alunosSimulados.forEach(aluno => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${aluno.numero}</td>
+                    <td>${aluno.nome}</td>
+                    <td>
+                        <select class="status-falta" data-aluno-id="${aluno.id}" style="padding: 5px; border: 1px solid #ddd; border-radius: 4px;">
+                            <option value="presente">Presente</option>
+                            <option value="ausente">Ausente</option>
+                            <option value="justificado">Justificado</option>
+                        </select>
+                    </td>
+                    <td>
+                        <input type="text" 
+                               class="justificativa-input" 
+                               data-aluno-id="${aluno.id}" 
+                               placeholder="Justificativa (se necessário)..."
+                               style="width: 250px; padding: 5px; border: 1px solid #ddd; border-radius: 4px;">
+                    </td>
+                    <td>
+                        <button class="btn btn-sm btn-outline" onclick="limparFaltaAluno(${aluno.id})">
+                            <i class="fas fa-eraser"></i> Limpar
+                        </button>
+                    </td>
+                `;
+                tbody.appendChild(row);
+            });
+            
+            document.getElementById('tabela-faltas-container').style.display = 'block';
+        }
+
+        // Função para carregar histórico
+        function carregarHistorico() {
+            const turma = document.getElementById('turma-historico').value;
+            const periodo = document.getElementById('periodo-historico').value;
+            
+            if (!turma || turma === 'Selecione a Turma') {
+                alert('Por favor, selecione a turma.');
+                return;
+            }
+            
+            // Dados simulados para o histórico
+            const historicoSimulado = [
+                { nome: 'Ana Carolina Silva', bim1: 8.5, bim2: 9.0, bim3: 8.8, bim4: 9.2, faltas: 2 },
+                { nome: 'Bruno Almeida Santos', bim1: 7.2, bim2: 7.8, bim3: 6.5, bim4: 7.0, faltas: 5 },
+                { nome: 'Carla Mendes Oliveira', bim1: 9.1, bim2: 8.7, bim3: 9.3, bim4: 8.9, faltas: 1 },
+                { nome: 'Daniel Ferreira Lima', bim1: 6.8, bim2: 7.2, bim3: 7.5, bim4: 7.8, faltas: 3 },
+                { nome: 'Eduarda Gomes Costa', bim1: 8.9, bim2: 9.1, bim3: 8.6, bim4: 9.0, faltas: 0 },
+                { nome: 'Felipe Santos Rocha', bim1: 5.5, bim2: 6.2, bim3: 6.8, bim4: 7.1, faltas: 8 },
+                { nome: 'Gabriela Costa Lima', bim1: 9.5, bim2: 9.2, bim3: 9.8, bim4: 9.6, faltas: 1 },
+                { nome: 'Henrique Oliveira Silva', bim1: 7.8, bim2: 8.1, bim3: 7.9, bim4: 8.3, faltas: 2 }
+            ];
+            
+            const tbody = document.getElementById('tbody-historico');
+            tbody.innerHTML = '';
+            
+            let totalAlunos = historicoSimulado.length;
+            let somaMedias = 0;
+            let aprovados = 0;
+            let reprovados = 0;
+            
+            historicoSimulado.forEach(aluno => {
+                const mediaFinal = ((aluno.bim1 + aluno.bim2 + aluno.bim3 + aluno.bim4) / 4).toFixed(1);
+                const situacao = mediaFinal >= 7.0 && aluno.faltas <= 15 ? 'Aprovado' : 'Reprovado';
+                
+                somaMedias += parseFloat(mediaFinal);
+                if (situacao === 'Aprovado') aprovados++;
+                else reprovados++;
+                
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${aluno.nome}</td>
+                    <td>${aluno.bim1.toFixed(1)}</td>
+                    <td>${aluno.bim2.toFixed(1)}</td>
+                    <td>${aluno.bim3.toFixed(1)}</td>
+                    <td>${aluno.bim4.toFixed(1)}</td>
+                    <td><strong>${mediaFinal}</strong></td>
+                    <td>${aluno.faltas}</td>
+                    <td>
+                        <span class="status-badge ${situacao.toLowerCase() === 'aprovado' ? 'status-presente' : 'status-ausente'}">
+                            ${situacao}
+                        </span>
+                    </td>
+                `;
+                tbody.appendChild(row);
+            });
+            
+            // Atualizar resumo
+            const mediaTurma = (somaMedias / totalAlunos).toFixed(1);
+            document.getElementById('total-alunos').textContent = totalAlunos;
+            document.getElementById('media-turma').textContent = mediaTurma;
+            document.getElementById('total-aprovados').textContent = aprovados;
+            document.getElementById('total-reprovados').textContent = reprovados;
+            
+            document.getElementById('historico-container').style.display = 'block';
+        }
+
+        // Funções para salvar dados
+        function salvarNotas() {
+            const notas = [];
+            document.querySelectorAll('.nota-input').forEach(input => {
+                if (input.value) {
+                    notas.push({
+                        alunoId: input.dataset.alunoId,
+                        nota: parseFloat(input.value),
+                        observacao: document.querySelector(`.obs-input[data-aluno-id="${input.dataset.alunoId}"]`).value
+                    });
+                }
+            });
+            
+            if (notas.length === 0) {
+                alert('Nenhuma nota foi inserida.');
+                return;
+            }
+            
+            // Simular salvamento
+            alert(`${notas.length} nota(s) salva(s) com sucesso!`);
+            console.log('Notas salvas:', notas);
+        }
+
+        function salvarFaltas() {
+            const faltas = [];
+            document.querySelectorAll('.status-falta').forEach(select => {
+                const justificativa = document.querySelector(`.justificativa-input[data-aluno-id="${select.dataset.alunoId}"]`).value;
+                faltas.push({
+                    alunoId: select.dataset.alunoId,
+                    status: select.value,
+                    justificativa: justificativa
+                });
+            });
+            
+            // Simular salvamento
+            alert(`Faltas registradas para ${faltas.length} aluno(s)!`);
+            console.log('Faltas salvas:', faltas);
+        }
+
+        // Funções para limpar dados
+        function limparNotas() {
+            if (confirm('Tem certeza que deseja limpar todas as notas?')) {
+                document.querySelectorAll('.nota-input').forEach(input => input.value = '');
+                document.querySelectorAll('.obs-input').forEach(input => input.value = '');
+            }
+        }
+
+        function limparFaltas() {
+            if (confirm('Tem certeza que deseja limpar todos os registros de falta?')) {
+                document.querySelectorAll('.status-falta').forEach(select => select.value = 'presente');
+                document.querySelectorAll('.justificativa-input').forEach(input => input.value = '');
+            }
+        }
+
+        function limparNotaAluno(alunoId) {
+            document.querySelector(`.nota-input[data-aluno-id="${alunoId}"]`).value = '';
+            document.querySelector(`.obs-input[data-aluno-id="${alunoId}"]`).value = '';
+        }
+
+        function limparFaltaAluno(alunoId) {
+            document.querySelector(`.status-falta[data-aluno-id="${alunoId}"]`).value = 'presente';
+            document.querySelector(`.justificativa-input[data-aluno-id="${alunoId}"]`).value = '';
+        }
+
+        // Funções adicionais
+        function finalizarPeriodo() {
+            if (confirm('Tem certeza que deseja finalizar o período letivo? Esta ação não pode ser desfeita.')) {
+                alert('Período letivo finalizado com sucesso! Todas as notas e faltas foram consolidadas.');
+            }
+        }
+
+        function exportarRelatorio() {
+            alert('Relatório exportado com sucesso! O arquivo será baixado em breve.');
+            // Aqui seria implementada a lógica real de exportação
+        }
     </script>
 </body>
 </html>

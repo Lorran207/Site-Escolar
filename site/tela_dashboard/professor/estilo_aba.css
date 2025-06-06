@@ -452,8 +452,176 @@
     #aulas-content, 
     #biblioteca-content, 
     #plantao-content, 
-    #banco-questoes-content {
+    #banco-questoes-content,
+    #faltas-notas-content {
         min-height: 400px;
+    }
+
+    /* Estilos para abas de conteúdo */
+    .aba-content {
+        display: block;
+    }
+
+    /* Estilos para inputs de notas e faltas */
+    .nota-input, .obs-input, .status-falta, .justificativa-input {
+        width: 100%;
+        padding: 8px;
+        border: 1px solid #ddd;
+        border-radius: var(--borda-raio);
+        font-size: 14px;
+        transition: border-color 0.3s;
+    }
+
+    .nota-input:focus, .obs-input:focus, .status-falta:focus, .justificativa-input:focus {
+        outline: none;
+        border-color: var(--cor-primaria);
+        box-shadow: 0 0 0 2px rgba(231, 179, 66, 0.2);
+    }
+
+    /* Estilos para o histórico */
+    .historico-resumo {
+        margin-bottom: 20px;
+    }
+
+    .resumo-card {
+        background-color: #f8f9fa;
+        border: 1px solid #e9ecef;
+        border-radius: var(--borda-raio);
+        padding: 20px;
+        margin-bottom: 20px;
+    }
+
+    .resumo-card h4 {
+        color: var(--cor-primaria);
+        margin-bottom: 15px;
+        font-size: 18px;
+    }
+
+    .resumo-card p {
+        margin-bottom: 8px;
+        font-size: 14px;
+    }
+
+    .resumo-card span {
+        color: var(--cor-secundaria);
+        font-weight: 600;
+    }
+
+    /* Tabelas responsivas para faltas e notas */
+    #tabela-notas, #tabela-faltas, #tabela-historico {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 15px;
+        font-size: 14px;
+    }
+
+    #tabela-notas th, #tabela-faltas th, #tabela-historico th,
+    #tabela-notas td, #tabela-faltas td, #tabela-historico td {
+        padding: 12px 8px;
+        text-align: left;
+        border-bottom: 1px solid #eee;
+        vertical-align: middle;
+    }
+
+    #tabela-notas input[type="number"] {
+        width: 80px;
+    }
+
+    #tabela-notas input[type="text"] {
+        width: 200px;
+    }
+
+    #tabela-faltas select {
+        width: 120px;
+    }
+
+    #tabela-faltas input[type="text"] {
+        width: 250px;
+    }
+
+    /* Status badges específicos para histórico */
+    .status-badge.aprovado {
+        background-color: #e6f7ea;
+        color: #2e7d32;
+    }
+
+    .status-badge.reprovado {
+        background-color: #fbe9e7;
+        color: #c62828;
+    }
+
+    /* Melhorias para botões de ação */
+    .action-buttons {
+        display: flex;
+        gap: 10px;
+        justify-content: flex-end;
+        align-items: center;
+    }
+
+    .section-header .action-buttons {
+        margin-left: auto;
+    }
+
+    /* Responsividade específica para faltas e notas */
+    @media (max-width: 768px) {
+        .form-row-three {
+            flex-direction: column;
+        }
+
+        .form-row-three .form-group {
+            width: 100%;
+            margin-bottom: 15px;
+        }
+
+        #tabela-notas input[type="text"],
+        #tabela-faltas input[type="text"] {
+            width: 150px;
+        }
+
+        .resumo-card {
+            padding: 15px;
+        }
+
+        .action-buttons {
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .section-header {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 15px;
+        }
+
+        .section-header .action-buttons {
+            width: 100%;
+            flex-direction: row;
+            justify-content: flex-start;
+        }
+    }
+
+    @media (max-width: 480px) {
+        #tabela-notas, #tabela-faltas, #tabela-historico {
+            font-size: 12px;
+        }
+
+        #tabela-notas th, #tabela-faltas th, #tabela-historico th,
+        #tabela-notas td, #tabela-faltas td, #tabela-historico td {
+            padding: 8px 4px;
+        }
+
+        .nota-input {
+            width: 60px;
+        }
+
+        #tabela-notas input[type="text"],
+        #tabela-faltas input[type="text"] {
+            width: 120px;
+        }
+
+        .status-falta {
+            width: 100px;
+        }
     }
 
     /* Responsividade */
