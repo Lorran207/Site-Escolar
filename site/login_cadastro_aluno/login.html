@@ -38,13 +38,13 @@
     </div>
 
     <div class="login">
-      <form>
+      <form action="../../back-end/php/login_prof_adm.php" method="post">
         <label for="chk" aria-hidden="true">Login</label>
-        <input type="email" id="username" name="username" placeholder="Digite seu email" required>
-        <input type="password" id="password" name="pswd" placeholder="Digite sua senha" required>
+        <input type="text" id="username" name="username" placeholder="Digite seu usuario" required>
+        <input type="password" id="password" name="password" placeholder="Digite sua senha" required>
         <div id="login-message" class="login-message"></div>
         <div class="login-attempts">Tentativas: <span id="attempts-left">3</span></div>
-        <button type="button" onclick="coleta_dados()">Login</button>
+        <button type="submit">Login</button>
         <div class="forgot-password">
           <a href="#" onclick="esqueciSenha()">Esqueci minha senha</a>
         </div>
@@ -80,11 +80,6 @@
         themeIcon.textContent = '🌙';
       }
     }
-  </script>
-
-  <script type="module">
-    import { coleta_dados } from '../../back-end/login_cadastro_aluno/login.js';
-    window.coleta_dados = coleta_dados;
   </script>
 </body>
 </html>

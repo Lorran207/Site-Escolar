@@ -11,7 +11,6 @@
     --espacamento: 20px;
 }
 
-
 * {
     margin: 0;
     padding: 0;
@@ -37,6 +36,38 @@ body {
     border-radius: var(--borda-raio);
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
     overflow: hidden;
+    position: relative;
+}
+
+/* Botão Início */
+.inicio-button {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    z-index: 10;
+}
+
+.btn-inicio {
+    background-color: rgba(255, 255, 255, 0.9);
+    color: var(--cor-primaria);
+    border: 2px solid var(--cor-primaria);
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    backdrop-filter: blur(10px);
+}
+
+.btn-inicio:hover {
+    background-color: var(--cor-primaria);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(231, 179, 66, 0.3);
 }
 
 .header {
@@ -367,6 +398,19 @@ textarea {
 
     .progress-step::before {
         display: none;
+    }
+
+    .inicio-button {
+        position: relative;
+        top: 0;
+        right: 0;
+        text-align: center;
+        margin-bottom: 10px;
+    }
+
+    .btn-inicio {
+        width: 100%;
+        justify-content: center;
     }
 }
 
