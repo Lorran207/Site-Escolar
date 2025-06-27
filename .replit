@@ -1,5 +1,5 @@
 entrypoint = "index.html"
-modules = ["web"]
+modules = ["web", "postgresql-17", "php-8.1", "php-8.2"]
 
 [nix]
 channel = "stable-24_11"
